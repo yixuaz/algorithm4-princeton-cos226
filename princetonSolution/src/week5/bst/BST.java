@@ -1,8 +1,10 @@
 package week5.bst;
 
+import edu.princeton.cs.algs4.StdRandom;
+
 import java.util.NoSuchElementException;
 
-public class BST<Key extends Comparable<Key>, Val> {
+public class BST<Key extends Comparable<Key>, Val> implements BinarySearchTree<Key, Val> {
     protected class Node {
         Key key;
         Val val;
@@ -73,6 +75,7 @@ public class BST<Key extends Comparable<Key>, Val> {
         root = remove(root,key);
         return size() < oriSize;
     }
+
     protected Node remove(Node cur, Key key) {
         if (cur == null) return null;
         int compareResult = cur.key.compareTo(key);

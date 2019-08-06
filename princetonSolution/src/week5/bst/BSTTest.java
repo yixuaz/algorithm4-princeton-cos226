@@ -14,9 +14,9 @@ public class BSTTest {
     protected static final int N = 100000;
 
     protected RedBlackBST<Integer,Integer> expect;
-    protected BST<Integer, Integer> bst;
+    protected BinarySearchTree<Integer, Integer> bst;
 
-    protected BST<Integer, Integer> getToBeTestedBst() {
+    protected BinarySearchTree<Integer, Integer> getToBeTestedBst() {
         return new BST<>();
     }
     @Before

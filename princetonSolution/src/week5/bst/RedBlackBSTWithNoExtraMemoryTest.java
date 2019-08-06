@@ -10,14 +10,14 @@ import static org.junit.Assert.*;
 public class RedBlackBSTWithNoExtraMemoryTest extends BSTTest{
 
     @Override
-    protected BST<Integer, Integer> getToBeTestedBst() {
+    protected BinarySearchTree<Integer, Integer> getToBeTestedBst() {
         return new RedBlackBSTWithNoExtraMemory<>();
     }
 
-    @Test
+    @Test(timeout = 500)
     public void testSequentialInsetAndRemove() {
         RedBlackBST<Integer, Integer> expect = new RedBlackBST<>();
-        BST<Integer, Integer> bst = new RedBlackBSTWithNoExtraMemory<>();
+        BinarySearchTree<Integer, Integer> bst = getToBeTestedBst();
         for (int i = 0; i < N; i++) {
             expect.put(i,i);
             bst.put(i,i);
