@@ -1,5 +1,6 @@
 package commonutil;
 
+import java.util.Collection;
 import java.util.List;
 
 public class PrimitiveArrayConverter {
@@ -12,4 +13,12 @@ public class PrimitiveArrayConverter {
         return ans;
     }
 
+    public static long[] convertToLongArray(Collection<Long> in) {
+        long[] ans = new long[in.size()];
+        int idx = 0;
+        for (long i : in) {
+            ans[idx++] = i;
+        }
+        return ans;
+    }
 }
