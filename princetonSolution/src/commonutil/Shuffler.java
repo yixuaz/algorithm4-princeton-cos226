@@ -1,5 +1,7 @@
 package commonutil;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class Shuffler {
@@ -26,5 +28,12 @@ public class Shuffler {
         for (int i = 0; i < n; i++)
             ret[i] = lowerBound + r.nextInt(upperBound - lowerBound + 1);
         return ret;
+    }
+    public static List<Integer> getRandomList(int n, int lowerBound, int upperBound) {
+        Integer[] ret = new Integer[n];
+        Random r = new Random();
+        for (int i = 0; i < n; i++)
+            ret[i] = lowerBound + r.nextInt(upperBound - lowerBound + 1);
+        return Arrays.asList(ret);
     }
 }

@@ -59,7 +59,7 @@ public class EulerCycleTest {
             timecost2 += System.nanoTime() - st;
             Assert.assertEquals(expect, test);
         }
-        Assert.assertTrue(timecost1 > 100 * timecost2);
+        Assert.assertTrue(timecost1 + "," + timecost2, timecost1 > 70 * timecost2);
     }
 
 

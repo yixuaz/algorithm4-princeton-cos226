@@ -5,200 +5,210 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class SAP {
-    private static final byte IS_LEN = 0;
-    private static final byte IS_ANC = 1;
-
-    private final int vertexCnt;
-    private final int maxEdges;
-    private final int[] adj;
-    private final int[] vq, wq; // bfs queue for v and w
-    private int vqSt, wqSt = 0;
-    private int vqEd, wqEd = 0;
-    private final Map<Integer, Integer> v2step, w2step; //  save calulated step for nde
-    private final Map<Integer, Integer> lenCache, ancCache;
+    private final int vertexCnts; // number of vertices in this digraph
+    private final int[] adj; // convert digraph to int[]
+    private final int[] vQueue, wQueue; // bidirectionalBFS queue for v and w
+    private final int[] vNodeToSteps, wNodeToSteps; //  save calulated step for nde
+    private int vQueueSize = 0, wQueueSize = 0;
+    private int lastV = 0, lastW = 0;
+    private int lastAnc = 0, lastLen = 0;
 
     // constructor takes a digraph (not necessarily a DAG)
     public SAP(Digraph G) {
         if (G == null)
             throw new IllegalArgumentException();
-        vertexCnt = G.V();
-        vq = new int[vertexCnt];
-        wq = new int[vertexCnt];
-        v2step = new HashMap<>();
-        w2step = new HashMap<>();
-        lenCache = new HashMap<>();
-        ancCache = new HashMap<>();
-        int k = 0;
-        for (int i = 0; i < vertexCnt; i++) {
-            k = Math.max(G.outdegree(i), k);
-        }
-        maxEdges = k + 1;
-        adj = new int[vertexCnt * maxEdges];
-        for (int i = 0; i < vertexCnt; i++) {
-            int idx = i * maxEdges;
+        vertexCnts = G.V();
+        vQueue = new int[vertexCnts];
+        wQueue = new int[vertexCnts];
+        vNodeToSteps = new int[vertexCnts];
+        wNodeToSteps = new int[vertexCnts];
+
+        // first V + 1 position, save the adj start position and end position
+        // eg. vertex 0's outdegree edge is saved in, adj[0]~adj[1]
+        adj = new int[vertexCnts + G.E() + 2];
+        adj[0] = vertexCnts + 1;
+        int idx = vertexCnts + 1;
+        for (int i = 0; i < vertexCnts; i++) {
+            vNodeToSteps[i] = -1;
+            wNodeToSteps[i] = -1;
+            adj[i + 1] = adj[i] + G.outdegree(i);
             for (int v : G.adj(i))
                 adj[idx++] = v;
-            adj[idx] = -1;
         }
     }
 
-    private int bfs(int pair, byte enm) {
+    private void bidirectionalBFS() {
         // begin & end for current iteration
-        int vb = vqSt;
-        int wb = wqSt;
-        int ve = vqEd;
-        int we = wqEd;
+        int vQueueBeginIdx = 0;
+        int wQueueBeginIdx = 0;
+        int vQueueEndIdx = vQueueSize;
+        int wQueueEndIdx = wQueueSize;
 
         int step = 1;
-        int lenAns = vertexCnt;
+        int lenAns = vertexCnts;
         int ancAns = 0;
         int totalStep;
-        while (vb != ve || wb != we) {
-            if (step >= lenAns) break;
-            for (int i = vb; i < ve; i++) {
-                int j = vq[i] * maxEdges;
-                for (int vh = adj[j]; vh != -1; vh = adj[++j]) {
-                    if (v2step.containsKey(vh)) // already visited
+        while (vQueueBeginIdx < vQueueEndIdx || wQueueBeginIdx < wQueueEndIdx) {
+            for (int i = vQueueBeginIdx; i < vQueueEndIdx && step < lenAns; i++) {
+                int curValInVQueue = vQueue[i], adjBegin = adj[curValInVQueue], adjEnd = adj[curValInVQueue + 1];
+                for (int j = adjBegin; j < adjEnd && step < lenAns; j++) {
+                    int neighbor = adj[j];
+                    if (vNodeToSteps[neighbor] != -1) // already visited
                         continue;
-                    vq[vqEd++] = vh;
-                    v2step.put(vh, step);
-                    totalStep = step + w2step.getOrDefault(vh, vertexCnt);
-                    if (lenAns > totalStep) {
-                        lenAns = totalStep;
-                        ancAns = vh;
+                    vQueue[vQueueSize++] = neighbor;
+                    vNodeToSteps[neighbor] = step;
+                    if (wNodeToSteps[neighbor] != -1) {
+                        totalStep = step + wNodeToSteps[neighbor];
+                        if (lenAns > totalStep) {
+                            lenAns = totalStep;
+                            ancAns = neighbor;
+                        }
                     }
                 }
             }
-            for (int i = wb; i < we; i++) {
-                int j = wq[i] * maxEdges;
-                for (int wh = adj[j]; wh != -1; wh = adj[++j]) {
-                    if (w2step.containsKey(wh)) // already visited
+            for (int i = wQueueBeginIdx; i < wQueueEndIdx && step < lenAns; i++) {
+                int curValInWQueue = wQueue[i], adjBegin = adj[curValInWQueue], adjEnd = adj[curValInWQueue + 1];
+                for (int j = adjBegin; j < adjEnd && step < lenAns; j++) {
+                    int neighbor = adj[j];
+                    if (wNodeToSteps[neighbor] != -1) // already visited
                         continue;
-                    wq[wqEd++] = wh;
-                    w2step.put(wh, step);
-                    totalStep = step + v2step.getOrDefault(wh, vertexCnt);
-                    if (lenAns > totalStep) {
-                        lenAns = totalStep;
-                        ancAns = wh;
+                    wQueue[wQueueSize++] = neighbor;
+                    wNodeToSteps[neighbor] = step;
+                    if (vNodeToSteps[neighbor] != -1) {
+                        totalStep = step + vNodeToSteps[neighbor];
+                        if (lenAns > totalStep) {
+                            lenAns = totalStep;
+                            ancAns = neighbor;
+                        }
                     }
                 }
             }
-            vb = ve;
-            ve = vqEd;
-            wb = we;
-            we = wqEd;
+            vQueueBeginIdx = vQueueEndIdx;
+            vQueueEndIdx = vQueueSize;
+            wQueueBeginIdx = wQueueEndIdx;
+            wQueueEndIdx = wQueueSize;
             step++;
         }
-        boolean hasAns = lenAns < vertexCnt;
-        if (pair != 0) {
-            lenCache.put(pair, hasAns ? lenAns : -1);
-            ancCache.put(pair, hasAns ? ancAns : -1);
+        if (lenAns < vertexCnts) {
+            lastLen = lenAns;
+            lastAnc = ancAns;
+        } else {
+            lastLen = -1;
+            lastAnc = -1;
         }
-        return hasAns ? (enm == IS_LEN ? lenAns : ancAns) : -1;
     }
 
     private void validate(Integer v) {
-        if (v == null || v < 0 || v >= vertexCnt)
+        if (v == null || v < 0 || v >= vertexCnts)
             throw new IllegalArgumentException();
+    }
+
+    private void cleanNodeToStepsMap() {
+        for (int i = 0; i < wQueueSize; i++) {
+            wNodeToSteps[wQueue[i]] = -1;
+        }
+        for (int i = 0; i < vQueueSize; i++) {
+            vNodeToSteps[vQueue[i]] = -1;
+        }
     }
 
     // length of shortest ancestral path between v and w; -1 if no such path
     public int length(int v, int w) {
-        if (v < 0 || v >= vertexCnt || w < 0 || w >= vertexCnt)
+        if (v < 0 || v >= vertexCnts || w < 0 || w >= vertexCnts)
             throw new IllegalArgumentException();
         if (v == w)
             return 0;
-        wqSt = 0;
-        vqSt = 0;
-        wqEd = 1;
-        vqEd = 1;
-        w2step.clear();
-        v2step.clear();
-        w2step.put(w, 0);
-        v2step.put(v, 0);
-        vq[0] = v;
-        wq[0] = w;
-        return bfs(0, IS_LEN);
+        if (lastV == v && lastW == w)
+            return lastLen;
+        lastV = v;
+        lastW = w;
+        cleanNodeToStepsMap();
+        setupQueueAndNodeToStepsMap(v, w);
+        bidirectionalBFS();
+        return lastLen;
     }
 
+    private void setupQueueAndNodeToStepsMap(int v, int w) {
+        wQueueSize = 1;
+        vQueueSize = 1;
+        wNodeToSteps[w] = 0;
+        vNodeToSteps[v] = 0;
+        vQueue[0] = v;
+        wQueue[0] = w;
+    }
 
-    // a common ancestor of v and w that participates in a shortest ancestral path; -1 if no such path
+    // a common ancestor of v and w that participates in a shortest ancestral path;
+    // -1 if no such path
     public int ancestor(int v, int w) {
-        if (v < 0 || v >= vertexCnt || w < 0 || w >= vertexCnt)
+        if (v < 0 || v >= vertexCnts || w < 0 || w >= vertexCnts)
             throw new IllegalArgumentException();
         if (v == w)
             return v;
-        wqSt = 0;
-        vqSt = 0;
-        wqEd = 1;
-        vqEd = 1;
-        w2step.clear();
-        v2step.clear();
-        w2step.put(w, 0);
-        v2step.put(v, 0);
-        vq[0] = v;
-        wq[0] = w;
-        return bfs(0, IS_ANC);
+        if (lastV == v && lastW == w)
+            return lastAnc;
+        lastV = v;
+        lastW = w;
+        cleanNodeToStepsMap();
+        setupQueueAndNodeToStepsMap(v, w);
+        bidirectionalBFS();
+        return lastAnc;
     }
 
-    // length of shortest ancestral path between any vertex in v and any vertex in w; -1 if no such path
+    // length of shortest ancestral path
+    // between any vertex in v and any vertex in w; -1 if no such path
     public int length(Iterable<Integer> vi, Iterable<Integer> wi) {
         if (vi == null || wi == null)
             throw new IllegalArgumentException();
         int v = System.identityHashCode(vi), w = System.identityHashCode(wi);
-        int pair = v ^ w;
-        if (lenCache.containsKey(pair))
-            return lenCache.get(pair);
-        wqSt = 0;
-        vqSt = 0;
-        wqEd = 0;
-        vqEd = 0;
-        w2step.clear();
-        v2step.clear();
-        for (Integer v0 : vi) {
-            validate(v0);
-            v2step.put(v0, 0);
-            vq[vqEd++] = v0;
+        if (lastV == v && lastW == w)
+            return lastLen;
+        cleanNodeToStepsMap();
+        if (setupQueueAndNodeToStepsMap(vi, wi)) {
+            bidirectionalBFS();
         }
-        for (Integer w0 : wi) {
-            validate(w0);
-            if (v2step.containsKey(w0)) return 0;
-            w2step.put(w0, 0);
-            wq[wqEd++] = w0;
-        }
-        return bfs(pair, IS_LEN);
+        lastV = v;
+        lastW = w;
+        return lastLen;
     }
 
-    // a common ancestor that participates in shortest ancestral path; -1 if no such path
+    // a common ancestor that participates in shortest ancestral path;
+    // -1 if no such path
     public int ancestor(Iterable<Integer> vi, Iterable<Integer> wi) {
         if (vi == null || wi == null)
             throw new IllegalArgumentException();
         int v = System.identityHashCode(vi), w = System.identityHashCode(wi);
-        int pair = v ^ w;
-        if (ancCache.containsKey(pair))
-            return ancCache.get(pair);
-        wqSt = 0;
-        vqSt = 0;
-        wqEd = 0;
-        vqEd = 0;
-        w2step.clear();
-        v2step.clear();
+        if (lastV == v && lastW == w)
+            return lastAnc;
+        cleanNodeToStepsMap();
+        if (setupQueueAndNodeToStepsMap(vi, wi)) {
+            bidirectionalBFS();
+        }
+        lastV = v;
+        lastW = w;
+        return lastAnc;
+    }
+    // if already find ans, return false;
+    private boolean setupQueueAndNodeToStepsMap(Iterable<Integer> vi, Iterable<Integer> wi) {
+        wQueueSize = 0;
+        vQueueSize = 0;
         for (Integer v0 : vi) {
             validate(v0);
-            v2step.put(v0, 0);
-            vq[vqEd++] = v0;
+            vNodeToSteps[v0] = 0;
+            vQueue[vQueueSize++] = v0;
         }
         for (Integer w0 : wi) {
             validate(w0);
-            if (v2step.containsKey(w0)) return w0;
-            w2step.put(w0, 0);
-            wq[wqEd++] = w0;
+            if (vNodeToSteps[w0] == 0) {
+                lastLen = 0;
+                lastAnc = w0;
+                return false; // find ans, then no need do BFS
+            }
+            wNodeToSteps[w0] = 0;
+            wQueue[wQueueSize++] = w0;
         }
-        return bfs(pair, IS_ANC);
+        return true;
     }
 
     // do unit testing of this class

@@ -17,9 +17,8 @@ package commonutil.intervalTree;
  */
 
 
-import week5.geoapp.IntervalSearchTree;
+import part1.week5.geoapp.IntervalSearchTree;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;

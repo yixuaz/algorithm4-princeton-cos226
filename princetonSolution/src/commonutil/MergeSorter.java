@@ -1,6 +1,6 @@
 package commonutil;
 
-import week3.mergesort.MergeWithHalfArray;
+import part1.week3.mergesort.MergeWithHalfArray;
 
 public class MergeSorter implements ISorter {
     private InsertSorter insertSorter = new InsertSorter();
