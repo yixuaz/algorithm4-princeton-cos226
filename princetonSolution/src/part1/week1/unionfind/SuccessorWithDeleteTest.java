@@ -12,9 +12,9 @@ public class SuccessorWithDeleteTest {
         SuccessorWithDelete swd = new SuccessorWithDelete(10);
         for (int i = 0; i < 9; i++) {
             Assert.assertTrue(swd.remove(i));
-            Assert.assertEquals(swd.find(i),i+1);
+            Assert.assertEquals(swd.find(i), i + 1);
             if (i > 0)
-                Assert.assertEquals(swd.find(i - 1),i+1);
+                Assert.assertEquals(swd.find(i - 1), i + 1);
         }
     }
 
@@ -23,9 +23,9 @@ public class SuccessorWithDeleteTest {
         SuccessorWithDelete swd = new SuccessorWithDelete(10);
         for (int i = 9; i >= 0; i--) {
             Assert.assertTrue(swd.remove(i));
-            Assert.assertEquals(swd.find(i),-1);
+            Assert.assertEquals(swd.find(i), -1);
             if (i > 0)
-                Assert.assertEquals(swd.find(i - 1),i - 1);
+                Assert.assertEquals(swd.find(i - 1), i - 1);
         }
     }
 
@@ -36,16 +36,16 @@ public class SuccessorWithDeleteTest {
         for (int i = 0; i < N; i++) set.add(i);
         SuccessorWithDelete swd = new SuccessorWithDelete(N);
         Random r = new Random();
-        for (int i = 0; i < N/2; i++) {
+        for (int i = 0; i < N / 2; i++) {
             int k = 1 + r.nextInt(N - 1);
-            Assert.assertEquals(swd.remove(k),set.remove(k));
+            Assert.assertEquals(swd.remove(k), set.remove(k));
             Integer expect = set.ceiling(k - 1);
-            Assert.assertEquals(swd.find(k - 1),expect == null ? -1 : expect.intValue());
+            Assert.assertEquals(swd.find(k - 1), expect == null ? -1 : expect.intValue());
         }
-        for (int i = 0; i < N/4; i++) {
+        for (int i = 0; i < N / 4; i++) {
             int k = r.nextInt(N);
             Integer expect = set.ceiling(k);
-            Assert.assertEquals(swd.find(k),expect == null ? -1 : expect.intValue());
+            Assert.assertEquals(swd.find(k), expect == null ? -1 : expect.intValue());
         }
 
     }

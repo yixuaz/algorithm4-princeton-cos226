@@ -2,6 +2,25 @@ package part1.week1.project;
 
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
+/**
+ * ###Bonus
+ *
+ * this project have a bonus, if u can only use 1 union find to solve this problem correctly.
+ * so the question become how to use 1 union find to solve the backwash problem.
+ * the hint is take advantage of find and another state.
+ * as previous design, we only use 0 record block site, 1 record open site.
+ *
+ * because two point will cause backwash, one point is hard to know if it is percolate.
+ * so we need to find a solution how to break one of them.
+ *
+ * use second is easier. because backwash is solved. and another is how to know it is percolate without virtual bottom line.
+ * we need to know is there a cell connect any point in bottom line.
+ * so when open a block site, we set 1 value, if it bottom line we set 2 value on it.
+ *
+ * now the definition of open still is value > 0.
+ * and we need to check percolate only need check the root status is 2 or not.
+ * so what we need do is when union, if there is a set have 2 parent, we set new parent with 2.
+ */
 public class Percolation {
     private final byte[][] grid;
     private final WeightedQuickUnionUF uf;

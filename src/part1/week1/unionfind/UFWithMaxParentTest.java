@@ -17,12 +17,12 @@ public class UFWithMaxParentTest {
         Random r = new Random();
         for (int i = 0; i < N / 4; i++) {
             int k = r.nextInt(N), j = r.nextInt(N);
-            uf1.union(k,j);
-            uf2.union(k,j);
+            uf1.union(k, j);
+            uf2.union(k, j);
         }
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
-                Assert.assertEquals(uf1.connected(i,j),uf2.connected(i,j));
+                Assert.assertEquals(uf1.connected(i, j), uf2.connected(i, j));
             }
         }
 
@@ -43,13 +43,13 @@ public class UFWithMaxParentTest {
         for (int i = 0; i < k; i++) {
             int pre = -1;
             for (int j : treeSets[i]) {
-                if (pre != -1) uf.union(pre,j);
+                if (pre != -1) uf.union(pre, j);
                 pre = j;
             }
         }
         for (int i = 0; i < k; i++) {
             for (int j : treeSets[i]) {
-                Assert.assertEquals(uf.find(j),treeSets[i].last().intValue());
+                Assert.assertEquals(uf.find(j), treeSets[i].last().intValue());
             }
         }
     }

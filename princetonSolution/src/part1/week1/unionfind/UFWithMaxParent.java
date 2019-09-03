@@ -1,5 +1,10 @@
 package part1.week1.unionfind;
 
+/**
+ * Solution: add extra max array to record in the connected set, what is the max value. so we need to update it when
+ * union. we should use max from two set's max number. to find it, first find the root for the set,
+ * then get max value from the max array.
+ */
 public class UFWithMaxParent {
     private int[] parent;
     private int[] size;
@@ -20,9 +25,13 @@ public class UFWithMaxParent {
         int par = findWithPathCompression(p);
         return max[par];
     }
+
     private int findWithPathCompression(int p) {
-        if (parent[p] == p) return p;
-        return parent[p] = findWithPathCompression(parent[p]);
+        if (parent[p] == p) {
+            return p;
+        }
+        parent[p] = findWithPathCompression(parent[p]);
+        return parent[p];
     }
 
     public boolean union(int i, int j) {
@@ -31,11 +40,11 @@ public class UFWithMaxParent {
         if (size[pi] < size[pj]) {
             parent[pi] = pj;
             size[pj] += size[pi];
-            max[pj] = Math.max(max[pj],max[pi]);
+            max[pj] = Math.max(max[pj], max[pi]);
         } else {
             parent[pj] = pi;
             size[pi] += size[pj];
-            max[pi] = Math.max(max[pj],max[pi]);
+            max[pi] = Math.max(max[pj], max[pi]);
         }
         return true;
     }
