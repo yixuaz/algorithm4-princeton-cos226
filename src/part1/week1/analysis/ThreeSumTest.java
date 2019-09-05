@@ -8,26 +8,30 @@ import java.util.Random;
 public class ThreeSumTest {
     @Test
     public void basicTest1() {
-        int[] in = {0,0,0,0};
-        Assert.assertEquals(ThreeSum.solve(in),4);
+        int[] in = {0, 0, 0, 0};
+        Assert.assertEquals(ThreeSum.solve(in), 4);
     }
+
     @Test
     public void basicTest2() {
-        int[] in = {1,2,3,4,5,6};
-        Assert.assertEquals(ThreeSum.solve(in),0);
+        int[] in = {1, 2, 3, 4, 5, 6};
+        Assert.assertEquals(ThreeSum.solve(in), 0);
     }
+
     @Test
     public void basicTest3() {
-        int[] in = {-1,1};
-        Assert.assertEquals(ThreeSum.solve(in),0);
+        int[] in = {-1, 1};
+        Assert.assertEquals(ThreeSum.solve(in), 0);
         int[] in2 = {};
-        Assert.assertEquals(ThreeSum.solve(in2),0);
+        Assert.assertEquals(ThreeSum.solve(in2), 0);
     }
+
     @Test
     public void basicTest4() {
-        int[] in = {-1,-1,1,1,0};
-        Assert.assertEquals(ThreeSum.solve(in),4);
+        int[] in = {-1, -1, 1, 1, 0};
+        Assert.assertEquals(ThreeSum.solve(in), 4);
     }
+
     @Test(timeout = 1000)
     public void randomTest() {
         Random r = new Random();
@@ -40,6 +44,7 @@ public class ThreeSumTest {
             Assert.assertEquals(expect(in), ThreeSum.solve(in));
         }
     }
+
     private int expect(int[] nums) {
         int n = nums.length, cnt = 0;
         for (int i = 0; i < n; i++) {

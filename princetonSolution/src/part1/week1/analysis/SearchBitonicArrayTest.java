@@ -10,19 +10,20 @@ import java.util.Set;
 public class SearchBitonicArrayTest {
     @Test
     public void basicTest1() {
-        int[] in = {1,3,2};
+        int[] in = {1, 3, 2};
         for (int i : in) {
             Assert.assertTrue(SearchBitonicArray.solve3lgn(in, i) > 0);
             Assert.assertTrue(SearchBitonicArray.solve2lgn(in, i) > 0);
         }
-        Assert.assertTrue(SearchBitonicArray.solve3lgn(in,4) < 0);
-        Assert.assertTrue(SearchBitonicArray.solve3lgn(in,0) < 0);
-        Assert.assertTrue(SearchBitonicArray.solve2lgn(in,4) < 0);
-        Assert.assertTrue(SearchBitonicArray.solve2lgn(in,0) < 0);
+        Assert.assertTrue(SearchBitonicArray.solve3lgn(in, 4) < 0);
+        Assert.assertTrue(SearchBitonicArray.solve3lgn(in, 0) < 0);
+        Assert.assertTrue(SearchBitonicArray.solve2lgn(in, 4) < 0);
+        Assert.assertTrue(SearchBitonicArray.solve2lgn(in, 0) < 0);
     }
+
     @Test
     public void basicTest2() {
-        int[] in = {1,2,3,4,5,6,4,3,2};
+        int[] in = {1, 2, 3, 4, 5, 6, 4, 3, 2};
         for (int i : in) {
             Assert.assertTrue(SearchBitonicArray.solve3lgn(in, i) > 0);
             Assert.assertTrue(SearchBitonicArray.solve2lgn(in, i) > 0);
@@ -34,6 +35,7 @@ public class SearchBitonicArrayTest {
             Assert.assertTrue(SearchBitonicArray.solve2lgn(in, -i) < 0);
         }
     }
+
     @Test
     public void randomTest3() {
         int[] arr = new int[100000];
@@ -59,7 +61,7 @@ public class SearchBitonicArrayTest {
             cnt2 += sec;
             cnt3 += fir;
         }
-        Assert.assertTrue(Math.abs(1.5 - (double)cnt3/cnt2) < 0.15);
+        Assert.assertTrue(Math.abs(1.5 - (double) cnt3 / cnt2) < 0.15);
     }
 
 }

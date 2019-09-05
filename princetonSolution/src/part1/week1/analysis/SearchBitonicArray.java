@@ -1,28 +1,36 @@
 package part1.week1.analysis;
 
 public class SearchBitonicArray {
-    //if exists output compare times with positive, otherwise with negative
-    //input length must >= 3, and is bitonic
+    // if exists output compare times with positive, otherwise with negative
+    // input length must >= 3, and is bitonic
     public static int solve3lgn(int[] arr, int tar) {
-        //find peak
+        // find peak
         int s = 0, e = arr.length - 1, cnt = 0;
         while (s <= e) {
             int mid = s + (e - s) / 2;
             if (arr[mid] > arr[mid + 1]) {
                 e = mid - 1;
             } else {
-                s =  mid + 1;
+                s = mid + 1;
             }
             cnt++;
         }
         int peak = e + 1;
-        int findLeftCompareCnt = binarySearch(arr,0,peak,tar,true);
-        int findRightCompareCnt = binarySearch(arr,peak,arr.length - 1,tar,false);
+        // binary search on the increasing part and decreasing part
+        int findLeftCompareCnt = binarySearch(arr, 0, peak, tar, true);
+        int findRightCompareCnt = binarySearch(arr, peak, arr.length - 1, tar, false);
         boolean find = findLeftCompareCnt > 0 || findRightCompareCnt > 0;
         int res = cnt + Math.abs(findLeftCompareCnt) + Math.abs(findRightCompareCnt);
         return find ? res : -res;
     }
 
+    /**
+     * solution: binary search, one situation is the same as origin. another situation is we can
+     * use binary search on the left part and right part, even if one part is not sorted.
+     * @param arr
+     * @param tar
+     * @return compare time with positive iff found tar, negative iff not found tar
+     */
     public static int solve2lgn(int[] arr, int tar) {
         int s = 0, e = arr.length - 1, cnt = 0;
         boolean find = false;
@@ -36,8 +44,8 @@ public class SearchBitonicArray {
             }
             cnt++;
             if (tar < arr[mid]) {
-                int findLeftCompareCnt = binarySearch(arr,s,mid,tar,true);
-                int findRightCompareCnt = binarySearch(arr,mid,e,tar,false);
+                int findLeftCompareCnt = binarySearch(arr, s, mid, tar, true);
+                int findRightCompareCnt = binarySearch(arr, mid, e, tar, false);
                 find = (findLeftCompareCnt > 0 || findRightCompareCnt > 0);
                 cnt += Math.abs(findLeftCompareCnt) + Math.abs(findRightCompareCnt);
                 break;
@@ -45,7 +53,7 @@ public class SearchBitonicArray {
                 if (peakOnLeft) {
                     e = mid - 1;
                 } else {
-                    s =  mid + 1;
+                    s = mid + 1;
                 }
             }
         }
