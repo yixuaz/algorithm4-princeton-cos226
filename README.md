@@ -29,3 +29,4 @@ Every Quiz problem, I will build a class and a test to verify the correctness.
 ## List
 - [x] Week 1: union find (all 3 quiz, 1 project with 0 failed, 100 score with bonus; Aggregate score: 101.25%)
 - [x] Week 1: analysis of alogorithm (all 3 quiz)
+- [x] Week 2: stack queue (all 3 quiz, 1 project with 0 failed, 100 score with bonus; Aggregate score: 100.08%)

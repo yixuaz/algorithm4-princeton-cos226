@@ -1,10 +1,16 @@
 package part1.week2.stackqueue;
 
+/**
+ * Queue with two stacks. Implement a queue with two stacks so that each queue operations
+ * takes a constant amortized number of stack operations.
+ *
+ * @param <Item>
+ */
 public class QueueByTwoStack<Item> {
 
 
     public QueueByTwoStack() {
-        //TODO: ADD YOUR CODE HERE
+        // TODO: ADD YOUR CODE HERE
 
     }
 
@@ -14,12 +20,12 @@ public class QueueByTwoStack<Item> {
     }
 
     public boolean isEmpty() {
-        //TODO: ADD YOUR CODE HERE
+        // TODO: ADD YOUR CODE HERE
         return false;
     }
 
     public void enqueue(Item i) {
-        //TODO: ADD YOUR CODE HERE
+        // TODO: ADD YOUR CODE HERE
 
     }
 
@@ -29,7 +35,7 @@ public class QueueByTwoStack<Item> {
     }
 
     public Item peek() {
-        //TODO: ADD YOUR CODE HERE
+        // TODO: ADD YOUR CODE HERE
         return null;
     }
 }

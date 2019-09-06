@@ -1,5 +1,11 @@
 package part1.week2.stackqueue;
 
+/**
+ * Stack with max. Create a data structure that efficiently supports the stack operations (push and pop) and
+ * also a return-the-maximum operation. Assume the elements are real numbers so that you can compare them.
+ *
+ * @param <E>
+ */
 public class StackWithMax<E extends Comparable<E>> {
 
     public StackWithMax() {
@@ -10,6 +16,7 @@ public class StackWithMax<E extends Comparable<E>> {
         //TODO: ADD YOUR CODE HERE
         return null;
     }
+
     public E peek() {
         //TODO: ADD YOUR CODE HERE;
         return null;

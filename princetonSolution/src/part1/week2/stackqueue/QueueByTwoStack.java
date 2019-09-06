@@ -3,6 +3,12 @@ package part1.week2.stackqueue;
 import java.util.NoSuchElementException;
 import java.util.Stack;
 
+/**
+ * the stack is lifo, queue is fifo. when we want to out,
+ * we need to reverse elements in stack. so that's the usage of second stack.
+ *
+ * @param <Item>
+ */
 public class QueueByTwoStack<Item> {
     private Stack<Item> in, out;
 

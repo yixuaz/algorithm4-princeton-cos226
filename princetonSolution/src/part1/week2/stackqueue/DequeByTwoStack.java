@@ -3,6 +3,16 @@ package part1.week2.stackqueue;
 import java.util.NoSuchElementException;
 import java.util.Stack;
 
+/**
+ * the thought is similar with the two stack implementing queue. we keep two stack, one the open for left,
+ * another is open for right. so offer first, go left stack, offer last, go right stack.
+ * <p>
+ * the hardest part is poll first or poll right when the left stack or right stack empty
+ * we need to do a rebalance action like the Q1, we keep another auxiliary stack, to move half elements
+ * of not empty stack into it then move another half to the empty stack. then we move the auxiliary stack back.
+ *
+ * @param <Item>
+ */
 public class DequeByTwoStack<Item> {
     private Stack<Item> left, right;
 
@@ -40,7 +50,7 @@ public class DequeByTwoStack<Item> {
         if (!left.isEmpty()) {
             return left.pop();
         }
-        balance(left,right);
+        balance(left, right);
         return left.pop();
     }
 
@@ -51,7 +61,7 @@ public class DequeByTwoStack<Item> {
         if (!left.isEmpty()) {
             return left.peek();
         }
-        balance(left,right);
+        balance(left, right);
         return left.peek();
     }
 
@@ -78,7 +88,7 @@ public class DequeByTwoStack<Item> {
         if (!right.isEmpty()) {
             return right.pop();
         }
-        balance(right,left);
+        balance(right, left);
         return right.pop();
     }
 
@@ -89,7 +99,7 @@ public class DequeByTwoStack<Item> {
         if (!right.isEmpty()) {
             return right.peek();
         }
-        balance(right,left);
+        balance(right, left);
         return right.peek();
     }
 
