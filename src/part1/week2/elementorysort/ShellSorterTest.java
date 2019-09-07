@@ -8,6 +8,7 @@ import org.junit.rules.Timeout;
 public class ShellSorterTest extends SorterTest {
     @Rule
     public Timeout timeout = Timeout.millis(100);
+
     @Override
     public ISorter getSorter() {
         return new ShellSorter();

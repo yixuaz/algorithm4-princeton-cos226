@@ -12,7 +12,7 @@ public class IntersectionOfTwoSetTest {
     public void testFullIntersection() {
         int[] a = {1,2,3};
         int[] b = {2,3,1};
-        Assert.assertEquals(3,IntersectionOfTwoSet.intersectionCount(a,b));
+        Assert.assertEquals(3, IntersectionOfTwoSet.intersectionCount(a,b));
     }
     @Test
     public void testNoIntersection() {

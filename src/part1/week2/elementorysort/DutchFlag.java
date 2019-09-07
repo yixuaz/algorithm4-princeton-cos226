@@ -19,6 +19,7 @@ public class DutchFlag {
         buckets[i] = buckets[j];
         buckets[j] = tmp;
     }
+
     public int color(int i) {
         return buckets[i];
     }
