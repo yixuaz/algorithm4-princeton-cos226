@@ -12,22 +12,22 @@ public class DecimalDominantsTest {
 
     @Test
     public void basicTest() {
-        int[] A = {2,3,4,5,6,7,8,9,0,2};
-        Assert.assertArrayEquals(new int[]{2},DecimalDominants.getEleOccurMoreThanOneOfTen(A));
+        int[] A = {2, 3, 4, 5, 6, 7, 8, 9, 0, 2};
+        Assert.assertArrayEquals(new int[]{2}, DecimalDominants.getEleOccurMoreThanOneOfTen(A));
     }
 
     @Test
     public void basicTest2() {
-        int[] A = {2,3,4,5,6,7,8,9,0,1};
-        Assert.assertArrayEquals(new int[]{},DecimalDominants.getEleOccurMoreThanOneOfTen(A));
+        int[] A = {2, 3, 4, 5, 6, 7, 8, 9, 0, 1};
+        Assert.assertArrayEquals(new int[]{}, DecimalDominants.getEleOccurMoreThanOneOfTen(A));
     }
 
     @Test
     public void basicTest3() {
-        int[] A = {2,2,4,5,7,7,8,9,1,1,0,-1,-2,-3,-3,-5,-6,-7,-8};
+        int[] A = {2, 2, 4, 5, 7, 7, 8, 9, 1, 1, 0, -1, -2, -3, -3, -5, -6, -7, -8};
         int[] res = DecimalDominants.getEleOccurMoreThanOneOfTen(A);
         Arrays.sort(res);
-        Assert.assertArrayEquals(new int[]{-3,1,2,7},res);
+        Assert.assertArrayEquals(new int[]{-3, 1, 2, 7}, res);
     }
 
     @Test(timeout = 200)

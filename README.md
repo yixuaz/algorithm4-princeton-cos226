@@ -22,3 +22,4 @@ Every Quiz problem, I will build a class and a test to verify the correctness.
 - [x] Week 2: stack queue (all 3 quiz, 1 project with 0 failed, 100 score with bonus; Aggregate score: 100.08%)
 - [x] Week 2: elementary sort (all 3 quiz)
 - [x] Week 3: merge sort (all 3 quiz, 1 project with 0 failed, 100 score; Aggregate score: 100%)
+- [x] Week 3: quick sort (all 3 quiz)

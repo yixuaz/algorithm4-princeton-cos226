@@ -3,12 +3,19 @@ package part1.week3.quicksort;
 import static commonutil.Shuffler.shuffle;
 import static commonutil.Swapper.swap;
 
+/**
+ * choose one nut to partition the bolts,
+ * and then use matched bolt to partition the nuts.
+ * then we have two sub array to solve. then the steps is same as quick sort.
+ */
 public class NutsAndBolts {
-    public static class Nut implements Comparable<Bolt>{
+    public static class Nut implements Comparable<Bolt> {
         private final int size;
+
         public Nut(int size) {
             this.size = size;
         }
+
         @Override
         public int compareTo(Bolt o) {
             if (size == o.size)
@@ -16,11 +23,14 @@ public class NutsAndBolts {
             return size < o.size ? -1 : 1;
         }
     }
-    public static class Bolt implements Comparable<Nut>{
+
+    public static class Bolt implements Comparable<Nut> {
         private final int size;
+
         public Bolt(int size) {
             this.size = size;
         }
+
         @Override
         public int compareTo(Nut o) {
             if (size == o.size)
@@ -37,6 +47,7 @@ public class NutsAndBolts {
         shuffle(nuts);
         return nuts;
     }
+
     public static Bolt[] buildBolts(int n) {
         Bolt[] bolts = new Bolt[n];
         for (int i = 0; i < n; i++) {
@@ -50,22 +61,22 @@ public class NutsAndBolts {
         if (bolts.length != nuts.length) {
             throw new IllegalArgumentException("bolts and nuts length should be same");
         }
-        quickSort(bolts,nuts,0,bolts.length - 1);
+        quickSort(bolts, nuts, 0, bolts.length - 1);
     }
 
     private static void quickSort(Bolt[] bolts, Nut[] nuts, int s, int e) {
         if (s >= e) return;
         Bolt tarBolt = bolts[s];
-        int i = s,p = s, j = e;
+        int i = s, p = s, j = e;
         int findMatch = 0;
         while (p <= j) {
             if (nuts[p].compareTo(tarBolt) < 0) {
-                swap(nuts,i++,p++);
+                swap(nuts, i++, p++);
             } else if (nuts[p].compareTo(tarBolt) == 0) {
                 findMatch++;
                 p++;
             } else {
-                swap(nuts,j--,p);
+                swap(nuts, j--, p);
             }
         }
         if (findMatch != 1)
@@ -75,12 +86,12 @@ public class NutsAndBolts {
         int m = s;
         for (int k = s + 1; k <= e; k++) {
             if (bolts[k].compareTo(tarNut) < 0)
-                swap(bolts,++m,k);
+                swap(bolts, ++m, k);
         }
-        swap(bolts,m,s);
+        swap(bolts, m, s);
         assert bolts[m].compareTo(nuts[i]) == 0;
-        quickSort(bolts,nuts,s,m - 1);
-        quickSort(bolts,nuts,m + 1,e);
+        quickSort(bolts, nuts, s, m - 1);
+        quickSort(bolts, nuts, m + 1, e);
     }
 
 }

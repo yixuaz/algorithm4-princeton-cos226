@@ -5,17 +5,21 @@ import java.util.List;
 
 import static commonutil.PrimitiveArrayConverter.convertToIntArray;
 
+/**
+ * https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm
+ */
 public class DecimalDominants {
     public static int[] getEleOccurMoreThanOneOfTen(int[] arr) {
-        return convertToIntArray(getOccurMoreThanOneOfK(arr,10));
+        return convertToIntArray(getOccurMoreThanOneOfK(arr, 10));
     }
+
     private static List<Integer> getOccurMoreThanOneOfK(int[] arr, int k) {//O (k * N)
         int[] cnt = new int[k - 1];
         int[] candidate = new int[k - 1];
         for (int i : arr) {
-            if (joinSameKindSuccess(cnt,candidate,i))
+            if (joinSameKindSuccess(cnt, candidate, i))
                 continue;
-            if (findEmptyPosSuccess(cnt,candidate,i))
+            if (findEmptyPosSuccess(cnt, candidate, i))
                 continue;
             decreaseOneInEachPos(cnt);
         }
@@ -27,7 +31,7 @@ public class DecimalDominants {
         }
         List<Integer> ans = new ArrayList<>();
         for (int candi : candidates) {
-            if (checkMoreThanOneOfK(candi,arr,k)) {
+            if (checkMoreThanOneOfK(candi, arr, k)) {
                 ans.add(candi);
             }
         }

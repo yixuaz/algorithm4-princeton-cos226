@@ -30,7 +30,7 @@ public class NutsAndBoltsTest {
         int N = 100000;
         Bolt[] bolts = NutsAndBolts.buildBolts(N);
         Nut[] nuts = NutsAndBolts.buildNuts(N);
-        bolts[N/3] = bolts[N/4] = new Bolt(1);
+        bolts[N / 3] = bolts[N / 4] = new Bolt(1);
         NutsAndBolts.match(bolts, nuts);
     }
 
@@ -39,7 +39,7 @@ public class NutsAndBoltsTest {
         int N = 100000;
         Bolt[] bolts = NutsAndBolts.buildBolts(N);
         Nut[] nuts = NutsAndBolts.buildNuts(N);
-        nuts[N/3] = nuts[N/4] = new Nut(N/2);
+        nuts[N / 3] = nuts[N / 4] = new Nut(N / 2);
         NutsAndBolts.match(bolts, nuts);
     }
 
@@ -48,7 +48,7 @@ public class NutsAndBoltsTest {
         int N = 100000;
         Bolt[] bolts = NutsAndBolts.buildBolts(N);
         Nut[] nuts = NutsAndBolts.buildNuts(N);
-        bolts[N/3] = new Bolt(-1);
+        bolts[N / 3] = new Bolt(-1);
         NutsAndBolts.match(bolts, nuts);
     }
 
@@ -57,7 +57,7 @@ public class NutsAndBoltsTest {
         int N = 100000;
         Bolt[] bolts = NutsAndBolts.buildBolts(N);
         Nut[] nuts = NutsAndBolts.buildNuts(N);
-        nuts[N/4] = new Nut(2 * N);
+        nuts[N / 4] = new Nut(2 * N);
         NutsAndBolts.match(bolts, nuts);
     }
 }
