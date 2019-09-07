@@ -8,6 +8,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * step 1. sort point to check duplicate
+ * step 2. for each point, we sort based on the slope order, then same slope will become neighbor.
+ * step 3. check if there is continuous slope are same and count larger than 4.
+ * and there is no same slope point which is smaller than current one.
+ * step 4. add the answer when satisfy above condition
+ */
 public class FastCollinearPoints {
     private final LineSegment[] result;
 

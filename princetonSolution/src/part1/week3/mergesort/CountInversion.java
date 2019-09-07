@@ -4,6 +4,14 @@ import commonutil.IMerger;
 import commonutil.IResultAggr;
 import commonutil.MergeSorter;
 
+/**
+ * we can calculate counting inversions on merge sort template. it is also divide and conquer;
+ * there are two half, we calculate left part inversions number, also calculating the right part inversions.
+ * then we need to merge them, in this process, we only need to calculate the part from right side go ahead left side.
+ * for example. left side {1,3, 5} right side {2,4} so 2 is smaller than 3,5.
+ * so when merge to {1,2,?, ?, ?} it will add two more inversion. 4 is smaller than 5.
+ * so when merge to {1,2,3,4,?}, it will add one more inversion.
+ */
 public class CountInversion {
     private static MergeSorter mergeSorter = new MergeSorter();
     private class CountInversionMerger implements IMerger<Integer,Integer> {

@@ -2,6 +2,25 @@ package part1.week3.mergesort;
 
 import java.util.Random;
 
+/**
+ * this question is hard. and the answer in
+ * https://stackoverflow.com/questions/12167630/algorithm-for-shuffling-a-linked-list-in-n-log-n-time
+ * is totally wrong.
+ *
+ * u can use this algorithm, tester will failed.
+ * above algorithm's problem is uneven probability.
+ * why?
+ * because they choose left part and right part with 0.5 and 0.5, and ignore the size of each part.
+ * take an easy example, left is only 1, right have 2, 3
+ * so 1 move to the first is 0.5, move to the second is 0.25, move to the third is 0.25
+ *
+ * so the correct way should calculate current two list size. so same example. only 33.333% to move 1,
+ * 66.6% to move 2. if 2 go to the front.then we have 50 % and 50 % to choose 1 and 3.
+ * now the 1 have 33% chance to go to first, 66% * 50% go the the second, and 66% * 50% go to the last.
+ * some people may ask how about 2, it have 66% chance to go the first.
+ * u should keep the previous step when only have 2 and 3. 2 have 50% chance become previous than 3, so same as 3.
+ * in another try, may situtaiton is 1 and 3,2. with 50% probability. so it is uniform.
+ */
 public class ShuffleLinkedList {
     public static class Node {
         public int val;

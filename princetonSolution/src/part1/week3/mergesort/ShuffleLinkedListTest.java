@@ -50,7 +50,7 @@ public class ShuffleLinkedListTest {
             for (int i = 0; i < n; i++) {
                 // System.out.println(Arrays.toString(check[i]));
                 for (int j = 0; j < n; j++) {
-
+                    // 0.06 is a tolerance scope, the probability of each item should be uniform
                     Assert.assertTrue(Math.abs(expect - check[i][j]) <= 0.06 * expect);
                 }
             }

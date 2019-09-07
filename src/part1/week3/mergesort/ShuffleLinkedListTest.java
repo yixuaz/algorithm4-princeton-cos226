@@ -36,7 +36,7 @@ public class ShuffleLinkedListTest {
             int[][] check = new int[n][n];
             for (int i = 0; i < N; i++) {
                 Node cur = linkedList.buildLinkedList(n);
-                linkedList.shuffle(cur,n);
+                linkedList.shuffle(cur);
                 int[] res = new int[n];
                 for (int j = 0; j < n; j++, cur = cur.next) {
                     res[cur.val]++;
@@ -50,7 +50,7 @@ public class ShuffleLinkedListTest {
             for (int i = 0; i < n; i++) {
                //  System.out.println(Arrays.toString(check[i]));
                 for (int j = 0; j < n; j++) {
-
+                    // 0.06 is a tolerance scope, the probability of each item should be uniform
                     Assert.assertTrue(Math.abs(expect - check[i][j]) <= 0.06 * expect);
                 }
             }

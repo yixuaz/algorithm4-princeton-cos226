@@ -19,10 +19,10 @@ public class LineSegment {
     /**
      * Initializes a new line segment.
      *
-     * @param  p one endpoint
-     * @param  q the other endpoint
+     * @param p one endpoint
+     * @param q the other endpoint
      * @throws NullPointerException if either <tt>p</tt> or <tt>q</tt>
-     *         is <tt>null</tt>
+     *                              is <tt>null</tt>
      */
     public LineSegment(Point p, Point q) {
         if (p == null || q == null) {
@@ -64,9 +64,9 @@ public class LineSegment {
     }
 
     public static void main(String[] args) {
-        Point[] a = {new Point(1,3), new Point(2,3)};
+        Point[] a = {new Point(1, 3), new Point(2, 3)};
         Point[] b = a.clone();
-        a[0] = new Point(3,3);
+        a[0] = new Point(3, 3);
         System.out.println(a[0]);
         System.out.println(b[0]);
     }
