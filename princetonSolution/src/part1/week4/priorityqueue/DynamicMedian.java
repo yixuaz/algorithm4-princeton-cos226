@@ -4,6 +4,16 @@ import java.util.Collections;
 import java.util.NoSuchElementException;
 import java.util.PriorityQueue;
 
+/**
+ * this question could be solved by two priority queue, one is maxheap, another is minheap.
+ * because we need to  find the median in constant time, we need to balance the elements evenly into two pq.
+ * the most important is that maxHeap.max <= minHeap.min
+ * then the maxHeap max is the median.
+ * the problem now is remove and insert, when insert we can insert to the max heap first,
+ * then check it still meet the invariant, the size diff is <= 1, and maxHeap max <= minHeap min,
+ * if not, do some balance action.
+ * remove we can just pop the maxHeap max, then check invariant and do balance.
+ */
 public class DynamicMedian {
     private PriorityQueue<Integer> minHeap = new PriorityQueue<>();
     private PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
@@ -16,6 +26,7 @@ public class DynamicMedian {
         }
         balance();
     }
+
     private void balance() {
         if (maxHeap.size() > minHeap.size() + 1) {
             minHeap.offer(maxHeap.poll());

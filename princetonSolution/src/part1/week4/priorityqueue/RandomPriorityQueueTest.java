@@ -17,11 +17,12 @@ public class RandomPriorityQueueTest {
             pq.offer(i);
         }
         while (!rpq.isEmpty()) {
-            Assert.assertEquals(pq.peek(),rpq.max());
+            Assert.assertEquals(pq.peek(), rpq.max());
             int removed = rpq.delRandom();
             pq.remove(removed);
         }
     }
+
     @Test
     public void testRandom() {
         int N = 1000;
@@ -30,7 +31,7 @@ public class RandomPriorityQueueTest {
             rpq.insert(i);
         }
         int[] sample = new int[N];
-        for (int i = 0; i < N*N; i++) {
+        for (int i = 0; i < N * N; i++) {
             sample[rpq.sample()]++;
         }
         for (int i = 0; i < N; i++) {
@@ -50,9 +51,9 @@ public class RandomPriorityQueueTest {
                 rpq.insert(val);
                 pq.offer(val);
             } else {
-                Assert.assertEquals(rpq.max(),pq.peek());
+                Assert.assertEquals(rpq.max(), pq.peek());
                 if (r.nextInt(2) == 0) {
-                    Assert.assertEquals(rpq.delMax(),pq.poll());
+                    Assert.assertEquals(rpq.delMax(), pq.poll());
                 } else {
                     int removed = rpq.delRandom();
                     Assert.assertTrue(pq.remove(removed));

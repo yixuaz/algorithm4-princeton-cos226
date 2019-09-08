@@ -70,7 +70,7 @@ public class Solver {
             }
         }
         isSolvable = false;
-        throw new IllegalStateException("i v a");
+        throw new IllegalStateException("invalid area");
     }
 
     private void fillSolution(Node curNode) {

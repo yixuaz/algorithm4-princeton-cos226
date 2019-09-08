@@ -23,10 +23,10 @@ public class DynamicMedianTest {
                 dynamicMedian.insert(val);
                 expect.add(val);
                 Collections.sort(expect);
-                max = Math.max(expect.size(),max);
+                max = Math.max(expect.size(), max);
             } else {
-                Assert.assertEquals(expect.get((expect.size()-1)/2).intValue(),dynamicMedian.findMedian());
-                expect.remove((expect.size()-1)/2);
+                Assert.assertEquals(expect.get((expect.size() - 1) / 2).intValue(), dynamicMedian.findMedian());
+                expect.remove((expect.size() - 1) / 2);
                 dynamicMedian.removeMedian();
             }
         }

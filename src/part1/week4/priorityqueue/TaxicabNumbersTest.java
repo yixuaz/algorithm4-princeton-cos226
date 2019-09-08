@@ -14,8 +14,8 @@ public class TaxicabNumbersTest {
     public void basicTest() {
         long[] res = TaxicabNumbers.findAllTaxicabNum(13);
         long[] res2 = TaxicabNumbers.findAllTaxicabNumLessSpace(13);
-        Assert.assertArrayEquals(new long[]{1729},res);
-        Assert.assertArrayEquals(new long[]{1729},res2);
+        Assert.assertArrayEquals(new long[]{1729}, res);
+        Assert.assertArrayEquals(new long[]{1729}, res2);
     }
 
     @Test
@@ -25,16 +25,17 @@ public class TaxicabNumbersTest {
             long[] res2 = TaxicabNumbers.findAllTaxicabNumLessSpace(n);
             long[] expect = expect(n);
             Arrays.sort(expect);
-            Assert.assertArrayEquals(expect,res);
-            Assert.assertArrayEquals(expect,res2);
+            Assert.assertArrayEquals(expect, res);
+            Assert.assertArrayEquals(expect, res2);
         }
     }
-    long[] expect(int n) {
+
+    private long[] expect(int n) {
         Set<Long> seen = new HashSet<Long>();
         Set<Long> result = new HashSet<Long>();
         for (int i = 1; i < n; i++) {
             for (int j = i; j < n; j++) {
-                long cur = cal(i,j);
+                long cur = cal(i, j);
                 if (!seen.add(cur)) {
                     result.add(cur);
                 }
@@ -42,6 +43,7 @@ public class TaxicabNumbersTest {
         }
         return convertToLongArray(result);
     }
+
     private long cal(long i, long j) {
         return i * i * i + j * j * j;
     }
