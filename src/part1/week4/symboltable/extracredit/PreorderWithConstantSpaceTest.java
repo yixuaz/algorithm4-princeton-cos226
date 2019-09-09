@@ -1,22 +1,23 @@
-package part1.week4.symboltable;
+package part1.week4.symboltable.extracredit;
 
 import org.junit.Assert;
 import org.junit.Test;
+import part1.week4.symboltable.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class InorderWithConstantSpaceTest {
+public class PreorderWithConstantSpaceTest {
     @Test
     public void basicTest() {
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(-2);
         root.right = new TreeNode(-3);
-        List<TreeNode> res = InorderWithConstantSpace.solve(root);
+        List<TreeNode> res = PreorderWithConstantSpace.solve(root);
         Assert.assertEquals(3, res.size());
-        Assert.assertEquals(root.left, res.get(0));
-        Assert.assertEquals(root, res.get(1));
+        Assert.assertEquals(root, res.get(0));
+        Assert.assertEquals(root.left, res.get(1));
         Assert.assertEquals(root.right, res.get(2));
     }
 
@@ -25,11 +26,11 @@ public class InorderWithConstantSpaceTest {
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(-2);
         root.left.right = new TreeNode(-3);
-        List<TreeNode> res = InorderWithConstantSpace.solve(root);
+        List<TreeNode> res = PreorderWithConstantSpace.solve(root);
         Assert.assertEquals(3, res.size());
-        Assert.assertEquals(root.left, res.get(0));
-        Assert.assertEquals(root.left.right, res.get(1));
-        Assert.assertEquals(root, res.get(2));
+        Assert.assertEquals(root, res.get(0));
+        Assert.assertEquals(root.left, res.get(1));
+        Assert.assertEquals(root.left.right, res.get(2));
     }
 
     @Test
@@ -37,11 +38,11 @@ public class InorderWithConstantSpaceTest {
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(-2);
         root.left.left = new TreeNode(-3);
-        List<TreeNode> res = InorderWithConstantSpace.solve(root);
+        List<TreeNode> res = PreorderWithConstantSpace.solve(root);
         Assert.assertEquals(3, res.size());
-        Assert.assertEquals(root.left.left, res.get(0));
+        Assert.assertEquals(root.left.left, res.get(2));
         Assert.assertEquals(root.left, res.get(1));
-        Assert.assertEquals(root, res.get(2));
+        Assert.assertEquals(root, res.get(0));
     }
 
     @Test
@@ -50,7 +51,7 @@ public class InorderWithConstantSpaceTest {
         Random r = new Random();
         for (int i = 10; i < N; i += r.nextInt(i)) {
             TreeNode root = TreeNode.buildBT(i);
-            List<TreeNode> res = InorderWithConstantSpace.solve(root);
+            List<TreeNode> res = PreorderWithConstantSpace.solve(root);
             List<TreeNode> expect = expect(root);
             Assert.assertArrayEquals(expect.toArray(new TreeNode[0]),
                     res.toArray(new TreeNode[0]));
@@ -59,15 +60,15 @@ public class InorderWithConstantSpaceTest {
 
     private List<TreeNode> expect(TreeNode root) {
         List<TreeNode> res = new ArrayList<>();
-        inOrder(root, res);
+        preOrder(root, res);
         return res;
     }
 
-    private void inOrder(TreeNode cur, List<TreeNode> res) {
+    private void preOrder(TreeNode cur, List<TreeNode> res) {
         if (cur == null) return;
-        inOrder(cur.left, res);
         res.add(cur);
-        inOrder(cur.right, res);
+        preOrder(cur.left, res);
+        preOrder(cur.right, res);
     }
 
 

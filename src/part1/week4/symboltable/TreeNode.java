@@ -6,9 +6,9 @@ import java.util.Random;
 
 public class TreeNode {
     private static final Random r = new Random();
-    protected TreeNode left;
-    protected TreeNode right;
-    protected final int val;
+    public TreeNode left;
+    public TreeNode right;
+    public final int val;
     public TreeNode(int val) {
         this.val = val;
     }

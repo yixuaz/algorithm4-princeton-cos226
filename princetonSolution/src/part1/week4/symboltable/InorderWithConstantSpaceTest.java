@@ -14,10 +14,10 @@ public class InorderWithConstantSpaceTest {
         root.left = new TreeNode(-2);
         root.right = new TreeNode(-3);
         List<TreeNode> res = InorderWithConstantSpace.solve(root);
-        Assert.assertEquals(3,res.size());
-        Assert.assertEquals(root.left,res.get(0));
-        Assert.assertEquals(root,res.get(1));
-        Assert.assertEquals(root.right,res.get(2));
+        Assert.assertEquals(3, res.size());
+        Assert.assertEquals(root.left, res.get(0));
+        Assert.assertEquals(root, res.get(1));
+        Assert.assertEquals(root.right, res.get(2));
     }
 
     @Test
@@ -26,10 +26,10 @@ public class InorderWithConstantSpaceTest {
         root.left = new TreeNode(-2);
         root.left.right = new TreeNode(-3);
         List<TreeNode> res = InorderWithConstantSpace.solve(root);
-        Assert.assertEquals(3,res.size());
-        Assert.assertEquals(root.left,res.get(0));
-        Assert.assertEquals(root.left.right,res.get(1));
-        Assert.assertEquals(root,res.get(2));
+        Assert.assertEquals(3, res.size());
+        Assert.assertEquals(root.left, res.get(0));
+        Assert.assertEquals(root.left.right, res.get(1));
+        Assert.assertEquals(root, res.get(2));
     }
 
     @Test
@@ -38,10 +38,10 @@ public class InorderWithConstantSpaceTest {
         root.left = new TreeNode(-2);
         root.left.left = new TreeNode(-3);
         List<TreeNode> res = InorderWithConstantSpace.solve(root);
-        Assert.assertEquals(3,res.size());
-        Assert.assertEquals(root.left.left,res.get(0));
-        Assert.assertEquals(root.left,res.get(1));
-        Assert.assertEquals(root,res.get(2));
+        Assert.assertEquals(3, res.size());
+        Assert.assertEquals(root.left.left, res.get(0));
+        Assert.assertEquals(root.left, res.get(1));
+        Assert.assertEquals(root, res.get(2));
     }
 
     @Test
@@ -59,15 +59,15 @@ public class InorderWithConstantSpaceTest {
 
     private List<TreeNode> expect(TreeNode root) {
         List<TreeNode> res = new ArrayList<>();
-        inOrder(root,res);
+        inOrder(root, res);
         return res;
     }
 
-    private void inOrder(TreeNode cur,List<TreeNode> res) {
+    private void inOrder(TreeNode cur, List<TreeNode> res) {
         if (cur == null) return;
-        inOrder(cur.left,res);
+        inOrder(cur.left, res);
         res.add(cur);
-        inOrder(cur.right,res);
+        inOrder(cur.right, res);
     }
 
 

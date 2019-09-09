@@ -11,7 +11,7 @@ public class IsBstTest {
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(-2);
         root.right = new TreeNode(-3);
-        Assert.assertEquals(IsBst.isBst(root),false);
+        Assert.assertEquals(IsBst.isBst(root), false);
     }
 
     @Test
@@ -19,7 +19,7 @@ public class IsBstTest {
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(-2);
         root.left.right = new TreeNode(-3);
-        Assert.assertEquals(IsBst.isBst(root),false);
+        Assert.assertEquals(IsBst.isBst(root), false);
     }
 
     @Test
@@ -27,20 +27,21 @@ public class IsBstTest {
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(-2);
         root.left.left = new TreeNode(-3);
-        Assert.assertEquals(IsBst.isBst(root),true);
+        Assert.assertEquals(IsBst.isBst(root), true);
     }
+
     @Test
     public void conerCaseTest4() {
         TreeNode root = null;
-        Assert.assertEquals(IsBst.isBst(root),true);
+        Assert.assertEquals(IsBst.isBst(root), true);
         root = new TreeNode(Integer.MIN_VALUE);
-        Assert.assertEquals(IsBst.isBst(root),true);
+        Assert.assertEquals(IsBst.isBst(root), true);
         root = new TreeNode(Integer.MAX_VALUE);
-        Assert.assertEquals(IsBst.isBst(root),true);
+        Assert.assertEquals(IsBst.isBst(root), true);
         root.left = new TreeNode(Integer.MIN_VALUE);
-        Assert.assertEquals(IsBst.isBst(root),true);
+        Assert.assertEquals(IsBst.isBst(root), true);
         root.left = new TreeNode(Integer.MAX_VALUE);
-        Assert.assertEquals(IsBst.isBst(root),false);
+        Assert.assertEquals(IsBst.isBst(root), false);
     }
 
     @Test
@@ -51,8 +52,8 @@ public class IsBstTest {
             TreeNode bt = TreeNode.buildBT(i);
             InorderWithConstantSpace.solve(bt);
             TreeNode bst = TreeNode.buildBST(i);
-            Assert.assertEquals(false,IsBst.isBst(bt));
-            Assert.assertEquals(true,IsBst.isBst(bst));
+            Assert.assertEquals(false, IsBst.isBst(bt));
+            Assert.assertEquals(true, IsBst.isBst(bst));
         }
     }
 
