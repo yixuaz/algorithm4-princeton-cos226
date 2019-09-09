@@ -28,6 +28,9 @@ Every Quiz problem, I will build a class and a test to verify the correctness.
 
 
 ## Extra Credit
+- [x] Week 1: Percolation project: memory bonus
 - [x] Week 2: elementary sort: jarvis convex hull algorithm
+- [x] Week 2: randomized queue project: memory bonus
 - [x] Week 4: priority queue: event driven simulation
+- [x] Week 4: 8 puzzle project: IDA* solve puzzle4x4-78.txt and puzzle4x4-80.txt
 - [x] Week 4: symbol table: morris preorder
