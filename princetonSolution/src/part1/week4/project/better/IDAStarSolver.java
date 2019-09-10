@@ -1,12 +1,14 @@
 package part1.week4.project.better;
 
-import commonutil.SorterTest;
+import part1.week4.project.better.heuristic.HeuristicFunction;
+import part1.week4.project.better.heuristic.PatternDatabase;
 
 import java.lang.reflect.Field;
 import java.util.Collections;
 import java.util.LinkedList;
 
 public class IDAStarSolver {
+    private HeuristicFunction heuristicAlgo = new PatternDatabase();
     private class Node {
         private final Board board;
         private final int move;
@@ -15,7 +17,7 @@ public class IDAStarSolver {
 
         public Node(Board board, int move, Node prev) {
             this.board = board;
-            this.manhattan = board.manhattan();
+            this.manhattan = heuristicAlgo.calculate(board.tiles, board.manhattan());
             this.move = move;
             this.prev = prev;
         }
@@ -30,41 +32,34 @@ public class IDAStarSolver {
         if (!checkSolvable(initial)) {
             return;
         }
-        int lowBound = initial.manhattan();
+        Node init = new Node(initial, 0, null);
+        int lowBound = init.manhattan;
         while (lowBound < 100 && solution == null) {
-            lowBound = dfs(new Node(initial, 0, null), lowBound);
+            lowBound = dfs(init, lowBound);
         }
     }
 
     private boolean checkSolvable(Board initial) {
-        Field field = null;
-        try {
-            field = initial.getClass().getDeclaredField("tiles");
-            field.setAccessible(true);
-            char[] tiles = (char[]) field.get(initial);
-            int invCnt = 0, yIdxFromBottom = 0, n = (int) Math.sqrt(tiles.length);
-            for (int i = 0; i < tiles.length; i++) {
-                if (tiles[i] == 0) {
-                    yIdxFromBottom = (n - i / n);
-                    continue;
-                }
-                for (int j = i + 1; j < tiles.length; j++) {
-                    // count pairs(i, j) such that i appears; before j, but i > j.
-                    if (tiles[j] == 0) continue;
-                    if (tiles[i] > tiles[j])
-                        invCnt++;
-                }
+        char[] tiles = hackGetTiles(initial);
+        int invCnt = 0, yIdxFromBottom = 0, n = (int) Math.sqrt(tiles.length);
+        for (int i = 0; i < tiles.length; i++) {
+            if (tiles[i] == 0) {
+                yIdxFromBottom = (n - i / n);
+                continue;
             }
-            if (tiles.length % 2 == 1) {
-                return invCnt % 2 == 0;
-            } else {
-                if (yIdxFromBottom % 2 == 1) return invCnt % 2 == 0;
-                else return invCnt % 2 == 1;
+            for (int j = i + 1; j < tiles.length; j++) {
+                // count pairs(i, j) such that i appears; before j, but i > j.
+                if (tiles[j] == 0) continue;
+                if (tiles[i] > tiles[j])
+                    invCnt++;
             }
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            e.printStackTrace();
         }
-        return false;
+        if (tiles.length % 2 == 1) {
+            return invCnt % 2 == 0;
+        } else {
+            if (yIdxFromBottom % 2 == 1) return invCnt % 2 == 0;
+            else return invCnt % 2 == 1;
+        }
     }
 
     private int dfs(Node cur, int maxStep) {
@@ -111,6 +106,15 @@ public class IDAStarSolver {
         return Collections.unmodifiableList(st);
     }
 
+    private char[] hackGetTiles(Board board) {
+        try {
+            Field field = board.getClass().getDeclaredField("tiles");
+            field.setAccessible(true);
+            return (char[]) field.get(board);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            throw new RuntimeException("failed to get char[] tiles in board", e);
+        }
+    }
 
 
 }

@@ -6,8 +6,8 @@ import java.util.List;
 
 public class Board {
     private static final char END_LINE = '\n';
-
-    private final char[] tiles;
+    // make it to private when submit to coursera
+    protected final char[] tiles;
     private final int n;
     private final int manhattan;
     private final int hamming;

@@ -52,8 +52,9 @@ public class PuzzleChecker {
 
             // solve the slider puzzle
             Board initial = new Board(tiles);
-            Solver solver = new Solver(initial);
+            IDAStarSolver solver = new IDAStarSolver(initial);
             StdOut.println(filename + ": " + solver.moves());
+            System.out.println(stopwatch.elapsedTime());
             if (needSolution) {
                 int idx = 0;
                 for (Board b : solver.solution()) {
