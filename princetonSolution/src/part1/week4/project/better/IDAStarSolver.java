@@ -1,6 +1,7 @@
 package part1.week4.project.better;
 
 import part1.week4.project.better.heuristic.HeuristicFunction;
+import part1.week4.project.better.heuristic.LinearConflict;
 import part1.week4.project.better.heuristic.PatternDatabase;
 
 import java.lang.reflect.Field;
@@ -8,7 +9,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 
 public class IDAStarSolver {
-    private HeuristicFunction heuristicAlgo = new PatternDatabase();
+    private HeuristicFunction heuristicAlgo = new LinearConflict();
     private class Node {
         private final Board board;
         private final int move;

@@ -21,13 +21,13 @@ public class GeneralizedQueueTest {
                 queue.append(val);
             } else {
                 if (r.nextBoolean())
-                    Assert.assertEquals(queue.removeFront(),expect.remove(0));
+                    Assert.assertEquals(queue.removeFront(), expect.remove(0));
                 else {
                     int idx = r.nextInt(expect.size());
                     int val = r.nextInt(expect.size());
-                    Assert.assertEquals(expect.remove(val),queue.remove(val));
+                    Assert.assertEquals(expect.remove(val), queue.remove(val));
                     for (int j = 0; j < expect.size(); j++)
-                        Assert.assertEquals(queue.get(j),expect.get(j));
+                        Assert.assertEquals(queue.get(j), expect.get(j));
                 }
             }
         }

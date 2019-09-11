@@ -25,6 +25,7 @@ Every Quiz problem, I will build a class and a test to verify the correctness.
 - [x] Week 3: quick sort (all 3 quiz)
 - [x] Week 4: priority queue (all 3 quiz, 1 project with 0 failed, 100 score with solve 4x4-49; Aggregate score: 100%)
 - [x] Week 4: symbol table (3 quiz)
+- [x] Week 5: balance search tree (3 quiz)
 
 
 ## Extra Credit

@@ -11,12 +11,13 @@ public class BSTTest {
     protected static final Random r = new Random();
     protected static final int N = 100000;
 
-    protected RedBlackBST<Integer,Integer> expect;
+    protected RedBlackBST<Integer, Integer> expect;
     protected BST<Integer, Integer> bst;
 
     protected BST<Integer, Integer> getToBeTestedBst() {
         return new BST<>();
     }
+
     @Before
     public void setup() {
         bst = getToBeTestedBst();
@@ -34,6 +35,7 @@ public class BSTTest {
             Assert.assertEquals(expect.contains(i), bst.contains(i));
         }
     }
+
     @Test
     public void size() {
         Assert.assertEquals(expect.size(), bst.size());

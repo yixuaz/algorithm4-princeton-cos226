@@ -1,16 +1,23 @@
 package part1.week5.bst;
 
+/**
+ * solution 1, use bst count if count >= 0 is black, count < 0 is red. we get count, use abs()
+ * @param <Key>
+ * @param <Val>
+ */
 public class RedBlackBSTWithNoExtraMemory<Key extends Comparable<Key>, Val> extends BST<Key, Val> {
 
     private boolean isRed(Node cur) {
         if (cur == null) return false;
         return cur.count > 0;// positive count is red
     }
+
     @Override
     protected int getCount(Node cur) {
         if (cur == null) return 0;
         return Math.abs(cur.count);
     }
+
     private void flipColors(Node cur) {
         cur.count = -cur.count;
         cur.left.count = -cur.left.count;
@@ -21,6 +28,7 @@ public class RedBlackBSTWithNoExtraMemory<Key extends Comparable<Key>, Val> exte
         x.count = -Math.abs(x.count);
         return x;
     }
+
     private Node setRed(Node x) {
         x.count = Math.abs(x.count);
         return x;
@@ -50,6 +58,7 @@ public class RedBlackBSTWithNoExtraMemory<Key extends Comparable<Key>, Val> exte
         if (isRed(x.right) && isRed(x.left)) flipColors(x);
         return x;
     }
+
     @Override
     protected Node updateCount(Node cur) {
         cur = balance(cur);
@@ -92,6 +101,7 @@ public class RedBlackBSTWithNoExtraMemory<Key extends Comparable<Key>, Val> exte
         if (!isEmpty()) setBlack(root);
         return true;
     }
+
     @Override
     protected Node remove(Node cur, Key key) {
         if (cur == null) return null;
@@ -121,7 +131,6 @@ public class RedBlackBSTWithNoExtraMemory<Key extends Comparable<Key>, Val> exte
         }
         return updateCount(cur);
     }
-
 
 
 }

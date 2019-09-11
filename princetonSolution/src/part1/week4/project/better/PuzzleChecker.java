@@ -37,7 +37,7 @@ public class PuzzleChecker {
         Stopwatch stopwatch = new Stopwatch();
         boolean needSolution = false;
         // for each command-line argument
-        File resources = new File("princetonSolution\\src\\part1\\week4\\project\\testfiles");
+        File resources = new File("princetonSolution\\src\\part1\\week4\\project\\hardtestfiles");
         for (File filename : resources.listFiles()) {
 
             // read in the board specified in the filename

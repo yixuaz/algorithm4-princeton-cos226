@@ -95,8 +95,8 @@ public class ShuffleLinkedList {
 //        pre = shuffle2(pre);
 //        post = shuffle2(post);
 //        if (fast == null) {
-//            Random r = new Random();
-//            int k = r.nextInt(preL);
+//            Random RANDOM = new Random();
+//            int k = RANDOM.nextInt(preL);
 //            Node curDummy = new Node(-1,post);
 //            Node p = curDummy;
 //            for (int i = 0; i < k; i++) {
@@ -123,10 +123,10 @@ public class ShuffleLinkedList {
 //    }
 //
 //    private Node merge2(Node pre, Node post) {
-//        Random r = new Random();
+//        Random RANDOM = new Random();
 //        Node dummy = new Node(-1), p = dummy;
 //        for (;pre != null || post != null; p = p.next) {
-//            if (pre == null || (post != null && r.nextInt(2) < 1)) {
+//            if (pre == null || (post != null && RANDOM.nextInt(2) < 1)) {
 //                p.next = post;
 //                post = post.next;
 //            } else {

@@ -1,5 +1,12 @@
 package part1.week5.bst;
 
+/**
+ * Red–black BST with no extra memory.
+ * Describe how to save the memory for storing the color information when implementing a red–black BST.
+ *
+ * @param <Key>
+ * @param <Val>
+ */
 public class RedBlackBSTWithNoExtraMemory<Key extends Comparable<Key>, Val> extends BST<Key, Val> {
 
     private boolean isRed(Node cur) {
@@ -15,6 +22,7 @@ public class RedBlackBSTWithNoExtraMemory<Key extends Comparable<Key>, Val> exte
         // TODO : ADD YOUR CODE HERE
         return x;
     }
+
     private Node setRed(Node x) {
         // TODO : ADD YOUR CODE HERE
         return x;
@@ -36,6 +44,7 @@ public class RedBlackBSTWithNoExtraMemory<Key extends Comparable<Key>, Val> exte
         if (isRed(x.right) && isRed(x.left)) flipColors(x);
         return x;
     }
+
     @Override
     protected Node updateCount(Node cur) {
         cur = balance(cur);
@@ -78,6 +87,7 @@ public class RedBlackBSTWithNoExtraMemory<Key extends Comparable<Key>, Val> exte
         if (!isEmpty()) setBlack(root);
         return true;
     }
+
     @Override
     protected Node remove(Node cur, Key key) {
         if (cur == null) return null;
@@ -95,7 +105,7 @@ public class RedBlackBSTWithNoExtraMemory<Key extends Comparable<Key>, Val> exte
             }
             if (!isRed(cur.right) && !isRed(cur.right.left))
                 cur = moveRedRight(cur);
-            //cur node may changed , so re calculate compareResult
+            // cur node may changed , so re calculate compareResult
             if (cur.key.compareTo(key) == 0) {
                 Node rightMin = findMin(cur.right);
                 cur.key = rightMin.key;
@@ -107,7 +117,6 @@ public class RedBlackBSTWithNoExtraMemory<Key extends Comparable<Key>, Val> exte
         }
         return updateCount(cur);
     }
-
 
 
 }

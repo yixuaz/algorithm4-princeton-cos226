@@ -8,21 +8,22 @@ import org.junit.Test;
 import java.util.Random;
 
 public class BSTTest {
-    protected static final Random r = new Random();
+    protected static final Random RANDOM = new Random();
     protected static final int N = 100000;
 
-    protected RedBlackBST<Integer,Integer> expect;
+    protected RedBlackBST<Integer, Integer> expect;
     protected BinarySearchTree<Integer, Integer> bst;
 
     protected BinarySearchTree<Integer, Integer> getToBeTestedBst() {
         return new BST<>();
     }
+
     @Before
     public void setup() {
         bst = getToBeTestedBst();
         expect = new RedBlackBST<>();
         for (int i = 0; i < N; i++) {
-            int val = -N + r.nextInt(2 * N);
+            int val = -N + RANDOM.nextInt(2 * N);
             expect.put(val, val);
             bst.put(val, val);
         }
@@ -34,6 +35,7 @@ public class BSTTest {
             Assert.assertEquals(expect.contains(i), bst.contains(i));
         }
     }
+
     @Test
     public void size() {
         Assert.assertEquals(expect.size(), bst.size());
@@ -54,8 +56,8 @@ public class BSTTest {
     @Test
     public void putAndremove() {
         for (int i = 0; i < N; i++) {
-            int val = -N + r.nextInt(2 * N);
-            if (r.nextBoolean()) {
+            int val = -N + RANDOM.nextInt(2 * N);
+            if (RANDOM.nextBoolean()) {
                 expect.delete(val);
                 bst.remove(val);
             } else {
