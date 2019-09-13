@@ -9,6 +9,7 @@ public class SegmentTree<E> {
     private final Merger<E> extraMerger;
     private final Updater<E> extraUpdater;
     private final int size;
+
     public SegmentTree(E[] data, Merger<E> function, Merger<E> extraMerger, Updater<E> extraUpdater) {
         if (function == null || data == null)
             throw new IllegalArgumentException("function and data could not be null");
@@ -18,7 +19,7 @@ public class SegmentTree<E> {
         this.function = function;
         this.extraMerger = extraMerger;
         this.extraUpdater = extraUpdater;
-        build(data.clone(),0, 0, size - 1);
+        build(data.clone(), 0, 0, size - 1);
     }
 
     private void build(E[] data, int curIdx, int st, int ed) {
@@ -49,7 +50,7 @@ public class SegmentTree<E> {
 
     private E query(int curIdx, int rangeSt, int rangeEd, int querySt, int queryEd) {
         if (querySt <= rangeSt && queryEd >= rangeEd) return tree[curIdx];
-        pushDown(curIdx,rangeSt,rangeEd);
+        pushDown(curIdx, rangeSt, rangeEd);
         int mid = rangeSt + (rangeEd - rangeSt) / 2;
         if (queryEd <= mid) return query(leftChild(curIdx), rangeSt, mid, querySt, queryEd);
         if (querySt > mid) return query(rightChild(curIdx), mid + 1, rangeEd, querySt, queryEd);
@@ -112,16 +113,16 @@ public class SegmentTree<E> {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder res = new StringBuilder();
         res.append('[');
-        for(int i = 0 ; i < tree.length ; i ++){
-            if(tree[i] != null)
+        for (int i = 0; i < tree.length; i++) {
+            if (tree[i] != null)
                 res.append(tree[i]);
             else
                 res.append("null");
 
-            if(i != tree.length - 1)
+            if (i != tree.length - 1)
                 res.append(", ");
         }
         res.append(']');

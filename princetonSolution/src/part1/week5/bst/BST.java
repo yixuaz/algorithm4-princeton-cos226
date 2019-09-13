@@ -4,9 +4,9 @@ import java.util.NoSuchElementException;
 
 public class BST<Key extends Comparable<Key>, Val> implements BinarySearchTree<Key, Val> {
     protected class Node {
-        Key key;
-        Val val;
-        Node left, right;
+        public Key key;
+        public Val val;
+        public Node left, right;
         int count;
 
         public Node(Key key, Val val) {

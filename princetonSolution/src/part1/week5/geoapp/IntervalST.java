@@ -3,8 +3,9 @@ package part1.week5.geoapp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class IntervalST<Key extends Comparable<Key>, Value> implements IntervalSearchTree<Key,Value>{
+public class IntervalST<Key extends Comparable<Key>, Value> implements IntervalSearchTree<Key, Value> {
     private Node root;
+
     private class Node {
         Key lo, hi;
         Value val;
@@ -41,8 +42,10 @@ public class IntervalST<Key extends Comparable<Key>, Value> implements IntervalS
             return true;
         }
     }
+
     public IntervalST() {
     }
+
     public int height() {
         return height(root);
     }
@@ -53,16 +56,20 @@ public class IntervalST<Key extends Comparable<Key>, Value> implements IntervalS
         }
         return 1 + Math.max(height(x.left), height(x.right));
     }
+
     public int size() {
         return size(root);
     }
+
     private int size(Node cur) {
         if (cur == null) return 0;
         return cur.N;
     }
+
     public void put(Key lo, Key hi, Value val) {
         root = put(root, lo, hi, val);
     }
+
     private Node put(Node cur, Key lo, Key hi, Value val) {
         if (cur == null) return new Node(lo, hi, val);
         int compareResult = cur.lo.compareTo(lo);
@@ -99,6 +106,7 @@ public class IntervalST<Key extends Comparable<Key>, Value> implements IntervalS
         root = delete(root, lo, hi);
         return value;
     }
+
     private Node delete(Node x, Key lo, Key hi) {
         if (x == null) {
             return null;
@@ -108,7 +116,7 @@ public class IntervalST<Key extends Comparable<Key>, Value> implements IntervalS
             cmp = hi.compareTo(x.hi);
         }
         if (cmp < 0) {
-            x.left  = delete(x.left, lo, hi);
+            x.left = delete(x.left, lo, hi);
         } else if (cmp > 0) {
             x.right = delete(x.right, lo, hi);
         } else {
@@ -151,24 +159,34 @@ public class IntervalST<Key extends Comparable<Key>, Value> implements IntervalS
     }
 
     // check integrity of subtree count fields
-    public boolean check() { return checkCount() && checkMax(); }
+    public boolean check() {
+        return checkCount() && checkMax();
+    }
 
     // check integrity of count fields
-    private boolean checkCount() { return checkCount(root); }
+    private boolean checkCount() {
+        return checkCount(root);
+    }
+
     private boolean checkCount(Node x) {
         if (x == null) return true;
         return checkCount(x.left) && checkCount(x.right) && (x.N == 1 + size(x.left) + size(x.right));
     }
 
-    private boolean checkMax() { return checkMax(root); }
+    private boolean checkMax() {
+        return checkMax(root);
+    }
+
     private boolean checkMax(Node x) {
         if (x == null) return true;
         return x.max == max3(x.max, max(x.left), max(x.right));
     }
+
     private Key max(Node cur) {
         if (cur == null) return null;
         return cur.max;
     }
+
     private Key max3(Key a, Key b, Key c) {
         Key res = a;
         if (b != null && b.compareTo(res) > 0) res = b;

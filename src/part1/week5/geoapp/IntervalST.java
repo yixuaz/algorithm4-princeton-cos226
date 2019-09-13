@@ -1,7 +1,8 @@
 package part1.week5.geoapp;
 
-public class IntervalST<Key extends Comparable<Key>, Value> implements IntervalSearchTree<Key,Value>{
+public class IntervalST<Key extends Comparable<Key>, Value> implements IntervalSearchTree<Key, Value> {
     private Node root;
+
     private class Node {
         Key lo, hi;
         Value val;
@@ -18,6 +19,7 @@ public class IntervalST<Key extends Comparable<Key>, Value> implements IntervalS
         }
 
     }
+
     public IntervalST() {
     }
 
@@ -37,13 +39,10 @@ public class IntervalST<Key extends Comparable<Key>, Value> implements IntervalS
     }
 
 
-
     public Value delete(Key lo, Key hi) {
         // TODO : ADD YOUR CODE HERE
         return null;
     }
-
-
 
 
     public Iterable<Value> intersects(Key lo, Key hi) {
@@ -52,9 +51,10 @@ public class IntervalST<Key extends Comparable<Key>, Value> implements IntervalS
     }
 
 
-
     // check integrity of subtree count fields
-    public boolean check() { return checkCount() && checkMax(); }
+    public boolean check() {
+        return checkCount() && checkMax();
+    }
 
     // check integrity of count fields
     private boolean checkCount() {
@@ -67,7 +67,6 @@ public class IntervalST<Key extends Comparable<Key>, Value> implements IntervalS
         // TODO : ADD YOUR CODE HERE
         return false;
     }
-
 
 
 }

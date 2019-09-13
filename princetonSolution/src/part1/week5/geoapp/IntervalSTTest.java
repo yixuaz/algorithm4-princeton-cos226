@@ -23,12 +23,12 @@ public class IntervalSTTest {
         for (int i = 0; i < N; i++) {
             double p1 = Math.random();
             double p2 = Math.random();
-            double low = Math.min(p1,p2);
-            double high = Math.max(p1,p2);
+            double low = Math.min(p1, p2);
+            double high = Math.max(p1, p2);
             System.out.println(low + "," + high);
             expect.put(low, high, (double) i);
             test.put(low, high, (double) i);
-            all.add(new double[]{low,high});
+            all.add(new double[]{low, high});
         }
         Assert.assertEquals(expect.size(), test.size());
         Assert.assertEquals(expect.check(), test.check());
@@ -48,12 +48,13 @@ public class IntervalSTTest {
                 Assert.assertTrue(RectangleIntersectionTest.equals(expectSet, testSet));
             } else {
                 double[] cur = all.remove(ran.nextInt(all.size()));
-                Assert.assertEquals(expect.delete(cur[0], cur[1]),test.delete(cur[0], cur[1]));
+                Assert.assertEquals(expect.delete(cur[0], cur[1]), test.delete(cur[0], cur[1]));
                 Assert.assertEquals(expect.size(), test.size());
                 Assert.assertEquals(expect.check(), test.check());
             }
         }
     }
+
     @Test
     public void basicTest() {
         IntervalSearchTree<Integer, Double> expect = new IntervalSTExp<>();
@@ -62,7 +63,7 @@ public class IntervalSTTest {
         prepare(expect);
         prepare(test);
 
-        Assert.assertEquals(expect.delete(-10,103), test.delete(-10, 103));
+        Assert.assertEquals(expect.delete(-10, 103), test.delete(-10, 103));
 
         //Assert.assertEquals(expect.height(), test.height());
         Assert.assertEquals(expect.size(), test.size());

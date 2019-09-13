@@ -17,8 +17,8 @@ import java.util.Set;
 public class RectangleIntersectionTest {
     @Test
     public void basicTest1() { // two intersect
-        RectHV rect1 = new RectHV(0,0,2,2);
-        RectHV rect2 = new RectHV(1,1,3,3);
+        RectHV rect1 = new RectHV(0, 0, 2, 2);
+        RectHV rect2 = new RectHV(1, 1, 3, 3);
         Set<RectHV> input = new HashSet<>(Arrays.asList(rect1, rect2));
         Map<RectHV, Set<RectHV>> res = RectangleIntersection.findAllIntersection(input);
         Set<RectHV> have1 = new HashSet<>(Arrays.asList(rect1));
@@ -29,8 +29,8 @@ public class RectangleIntersectionTest {
 
     @Test
     public void basicTest2() { // two not intersect
-        RectHV rect1 = new RectHV(0,0,2,2);
-        RectHV rect2 = new RectHV(3,3,4,4);
+        RectHV rect1 = new RectHV(0, 0, 2, 2);
+        RectHV rect2 = new RectHV(3, 3, 4, 4);
         Set<RectHV> input = new HashSet<>(Arrays.asList(rect1, rect2));
         Map<RectHV, Set<RectHV>> res = RectangleIntersection.findAllIntersection(input);
         Set<RectHV> empty = new HashSet<>();
@@ -40,13 +40,13 @@ public class RectangleIntersectionTest {
 
     @Test
     public void basicTest3() {
-        RectHV rect1 = new RectHV(0,1,7,2);
-        RectHV rect2 = new RectHV(1,0,2,3);
-        RectHV rect3 = new RectHV(3,0,4,3);
-        RectHV rect4 = new RectHV(-2,-2,-1,-1);
+        RectHV rect1 = new RectHV(0, 1, 7, 2);
+        RectHV rect2 = new RectHV(1, 0, 2, 3);
+        RectHV rect3 = new RectHV(3, 0, 4, 3);
+        RectHV rect4 = new RectHV(-2, -2, -1, -1);
         Set<RectHV> input = new HashSet<>(Arrays.asList(rect1, rect2, rect3, rect4));
         Map<RectHV, Set<RectHV>> res = RectangleIntersection.findAllIntersection(input);
-        Set<RectHV> have1 = new HashSet<>(Arrays.asList(rect2,rect3));
+        Set<RectHV> have1 = new HashSet<>(Arrays.asList(rect2, rect3));
         Set<RectHV> have23 = new HashSet<>(Arrays.asList(rect1));
         Set<RectHV> empty = new HashSet<>();
         Assert.assertTrue(equals(res.get(rect1), have1));
@@ -54,21 +54,22 @@ public class RectangleIntersectionTest {
         Assert.assertTrue(equals(res.get(rect3), have23));
         Assert.assertTrue(equals(res.get(rect4), empty));
     }
+
     @Test
     public void basicTest4() {
-        RectHV rect1 = new RectHV(0.3575171210237521,0.7146836650768305,
-                0.654698890179744,0.7389769277103051);
-        RectHV rect2 = new RectHV(0.5242190274474139,0.604704260298527,
-                0.5984919519775737,0.7351331826091808);
-        RectHV rect3 = new RectHV(0.26932805480982835,0.6878393553752091,
-                0.6415024527196731,0.7007551209727795);
-        RectHV rect4 = new RectHV(0.6194634824768956,0.6978808556408181,
-                0.6985437759233379,0.7976011872680293);
+        RectHV rect1 = new RectHV(0.3575171210237521, 0.7146836650768305,
+                0.654698890179744, 0.7389769277103051);
+        RectHV rect2 = new RectHV(0.5242190274474139, 0.604704260298527,
+                0.5984919519775737, 0.7351331826091808);
+        RectHV rect3 = new RectHV(0.26932805480982835, 0.6878393553752091,
+                0.6415024527196731, 0.7007551209727795);
+        RectHV rect4 = new RectHV(0.6194634824768956, 0.6978808556408181,
+                0.6985437759233379, 0.7976011872680293);
         Set<RectHV> input = new HashSet<>(Arrays.asList(rect1, rect2, rect3, rect4));
         Map<RectHV, Set<RectHV>> res = RectangleIntersection.findAllIntersection(input);
-        Set<RectHV> have13 = new HashSet<>(Arrays.asList(rect2,rect4));
-        Set<RectHV> have2 = new HashSet<>(Arrays.asList(rect1,rect3));
-        Set<RectHV> have4 = new HashSet<>(Arrays.asList(rect1,rect3));
+        Set<RectHV> have13 = new HashSet<>(Arrays.asList(rect2, rect4));
+        Set<RectHV> have2 = new HashSet<>(Arrays.asList(rect1, rect3));
+        Set<RectHV> have4 = new HashSet<>(Arrays.asList(rect1, rect3));
 
         Assert.assertTrue(equals(res.get(rect1), have13));
         Assert.assertTrue(equals(res.get(rect2), have2));
@@ -93,11 +94,11 @@ public class RectangleIntersectionTest {
         }
     }
 
-    public static boolean equals(Set<?> set1, Set<?> set2){
-        if(set1 == null || set2 == null){
+    public static boolean equals(Set<?> set1, Set<?> set2) {
+        if (set1 == null || set2 == null) {
             return false;
         }
-        if(set1.size() != set2.size()){
+        if (set1.size() != set2.size()) {
             return false;
         }
         return set1.containsAll(set2);
@@ -157,12 +158,12 @@ public class RectangleIntersectionTest {
         Set<RectHV> ret = new HashSet<>();
         Set<Double> distinct = new HashSet<>();
         while (ret.size() < n) {
-            double[] resx = {Math.random(),Math.random()};
-            double[] resy = {Math.random(),Math.random()};
+            double[] resx = {Math.random(), Math.random()};
+            double[] resy = {Math.random(), Math.random()};
             assert check(distinct, resx, resy);
             Arrays.sort(resx);
             Arrays.sort(resy);
-            RectHV cur = new RectHV(resx[0],resy[0],resx[1],resy[1]);
+            RectHV cur = new RectHV(resx[0], resy[0], resx[1], resy[1]);
             if (cur.height() * cur.width() > 0.01 || cur.height() < 0.01 || cur.width() < 0.01) continue;
             ret.add(cur);
         }

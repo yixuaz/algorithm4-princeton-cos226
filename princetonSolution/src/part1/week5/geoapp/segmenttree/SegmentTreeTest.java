@@ -76,7 +76,7 @@ public class SegmentTreeTest {
             int sum = 0;
             for (int j = i; j < in.length; j++) {
                 sum += in[j];
-                Assert.assertEquals(i +"," + j, sum, tree.query(i, j).intValue());
+                Assert.assertEquals(i + "," + j, sum, tree.query(i, j).intValue());
             }
         }
         System.out.println("pass");
@@ -106,7 +106,7 @@ public class SegmentTreeTest {
             int max = Integer.MIN_VALUE;
             for (int j = i; j < in.length; j++) {
                 max = Math.max(max, in[j]);
-                Assert.assertEquals(i +"," + j, max, tree.query(i, j).intValue());
+                Assert.assertEquals(i + "," + j, max, tree.query(i, j).intValue());
             }
         }
         System.out.println("pass");
