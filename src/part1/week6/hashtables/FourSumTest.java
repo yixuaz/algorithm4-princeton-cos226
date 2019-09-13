@@ -12,6 +12,7 @@ import static commonutil.Shuffler.getRandomArray;
 
 public class FourSumTest {
     Random r = new Random();
+
     @Test
     public void correctTest() {
         int idx = 0;
@@ -62,15 +63,15 @@ public class FourSumTest {
     @Test
     public void performanceTest() {
         int N = 1000;
-        int[] a = getRandomArray(N, 1, N*N);
+        int[] a = getRandomArray(N, 1, N * N);
         long st = System.nanoTime();
-        Assert.assertEquals(false,FourSum.solveInN2(a));
+        Assert.assertEquals(false, FourSum.solveInN2(a));
         Assert.assertTrue(System.nanoTime() - st < 250l * 1_000_000);
         N <<= 1;
-        a = getRandomArray(N, 1, N*N);
+        a = getRandomArray(N, 1, N * N);
         st = System.nanoTime();
-        Assert.assertEquals(false,FourSum.solveInN2(a));
-        Assert.assertTrue(System.nanoTime() - st <1000l * 1_000_000);
+        Assert.assertEquals(false, FourSum.solveInN2(a));
+        Assert.assertTrue(System.nanoTime() - st < 1000l * 1_000_000);
     }
 
 }

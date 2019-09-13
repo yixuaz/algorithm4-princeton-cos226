@@ -2,7 +2,9 @@ package part1.week6.hashtables;
 
 import org.junit.Assert;
 import org.junit.Test;
-import part1.week6.hashtables.HashWithWrongHashCodeAndEqual.*;
+import part1.week6.hashtables.HashWithWrongHashCodeAndEqual.OlympicAthlete1;
+import part1.week6.hashtables.HashWithWrongHashCodeAndEqual.OlympicAthlete2;
+import part1.week6.hashtables.HashWithWrongHashCodeAndEqual.OlympicAthlete3;
 
 import java.util.HashSet;
 import java.util.Set;

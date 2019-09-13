@@ -24,7 +24,7 @@ public class HashWithWrongHashCodeAndEqual {
         @Override
         public boolean equals(Object that) {
             if (that == null) return false;
-            if (! (that instanceof OlympicAthlete2)) return false;
+            if (!(that instanceof OlympicAthlete2)) return false;
             return name.equals(((OlympicAthlete2) that).name);
         }
     }

@@ -12,6 +12,7 @@ import static commonutil.Shuffler.getRandomArray;
 
 public class FourSumTest {
     Random r = new Random();
+
     @Test
     public void correctTest() {
         int idx = 0;
