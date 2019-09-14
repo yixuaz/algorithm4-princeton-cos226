@@ -29,7 +29,7 @@ public class ShortestDirectedCycleTest {
             if (!expect.hasCycle()) {
                 Assert.assertEquals(0, test);
             } else {
-                Assert.assertEquals(expect.length(),test);
+                Assert.assertEquals(expect.length(), test);
             }
 
         }

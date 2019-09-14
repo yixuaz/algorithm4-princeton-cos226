@@ -19,7 +19,7 @@ public class ReachableVertexTest {
             TransitiveClosure tc = new TransitiveClosure(dag);
             int test = ReachableVertex.solveDAG(GraphConverter.convert(dag));
             if (test == -1) {
-                Assert.assertTrue(checkNoThatPoint(tc,i));
+                Assert.assertTrue(checkNoThatPoint(tc, i));
             } else {
                 Assert.assertTrue(checkThatPoint(tc, test, i));
             }
@@ -47,7 +47,7 @@ public class ReachableVertexTest {
     private boolean checkThatPoint(TransitiveClosure tc, int test, int n) {
         int cnt = 0;
         for (int i = 0; i < n; i++) {
-            if (tc.reachable(i,test)) cnt++;
+            if (tc.reachable(i, test)) cnt++;
         }
         return cnt == n;
     }
@@ -56,13 +56,12 @@ public class ReachableVertexTest {
         for (int i = 0; i < n; i++) {
             int cnt = 0;
             for (int j = 0; j < n; j++) {
-                if (tc.reachable(j,i)) cnt++;
+                if (tc.reachable(j, i)) cnt++;
             }
             if (cnt == n) return false;
         }
         return true;
     }
-
 
 
 }

@@ -1,17 +1,24 @@
 package part2.week1.directedgraph;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
+/**
+ * DAG: we just check the node of outdegree is 0 is only one.
+ * Digraph: build strong component, then use strong component DAG then run above function.
+ */
 public class ReachableVertex {
     public static int solveDAG(Set<Integer>[] dag) {
-        Set<Integer> used = new HashSet<>();
-        for (int i = 0; i < dag.length; i++) used.add(i);
-        return solveDAG(dag, used);
+        int ans = -1, n = dag.length;
+        for (int i = 0; i < n; i++) {
+            if (dag[i].isEmpty()) {
+                if (ans != -1) return -1;
+                ans = i;
+            }
+        }
+        return ans;
     }
 
     public static int solveDigraph(Set<Integer>[] digraph) {
@@ -21,7 +28,7 @@ public class ReachableVertex {
         boolean[] seen = new boolean[digraph.length];
         for (int i = 0; i < n; i++) {
             if (seen[i]) continue;
-            dfs(i,rev,postOrder,seen);
+            dfs(i, rev, postOrder, seen);
         }
         Set<Integer>[] outdegree = new Set[n];
         for (int i = 0; i < n; i++) outdegree[i] = new HashSet<>();
@@ -45,7 +52,6 @@ public class ReachableVertex {
             }
         }
         return ans;
-
     }
 
     private static void dfs2(int cur, int idx, Set<Integer>[] gra, Set<Integer>[] outdegree, int[] seen) {
@@ -59,7 +65,8 @@ public class ReachableVertex {
             dfs2(nei, idx, gra, outdegree, seen);
         }
     }
-    private static void dfs(int cur,Set<Integer>[] rev, LinkedList<Integer> postOrder, boolean[] seen) {
+
+    private static void dfs(int cur, Set<Integer>[] rev, LinkedList<Integer> postOrder, boolean[] seen) {
         seen[cur] = true;
         for (int nei : rev[cur]) {
             if (seen[nei]) continue;

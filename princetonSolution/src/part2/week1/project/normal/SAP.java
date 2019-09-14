@@ -10,6 +10,7 @@ public class SAP {
     private static final int GET_MIN_LEN = 0;
     private static final int GET_SCA = 1;
     private final Digraph digraph;
+
     // constructor takes a digraph (not necessarily a DAG)
     public SAP(Digraph G) {
         digraph = new Digraph(G);
@@ -50,7 +51,7 @@ public class SAP {
 
     private void validate(int a, int b) {
         if (a < 0 || a >= digraph.V() || b < 0 || b >= digraph.V())
-            throw  new IllegalArgumentException("input out of range");
+            throw new IllegalArgumentException("input out of range");
     }
 
     // length of shortest ancestral path between any vertex in v and any vertex in w; -1 if no such path
@@ -91,7 +92,7 @@ public class SAP {
         while (!StdIn.isEmpty()) {
             int v = StdIn.readInt();
             int w = StdIn.readInt();
-            int length   = sap.length(v, w);
+            int length = sap.length(v, w);
             int ancestor = sap.ancestor(v, w);
             StdOut.printf("length = %d, ancestor = %d\n", length, ancestor);
         }

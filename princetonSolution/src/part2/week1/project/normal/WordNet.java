@@ -18,6 +18,7 @@ public class WordNet {
     private final List<String[]> vertexs; // id to word
     private final Map<String, Set<Integer>> syn2Id; // word 2 id
     private final SAP sap; // sap
+
     // constructor takes the name of the two input files
     public WordNet(String synsets, String hypernyms) {
         checkNull(synsets, hypernyms);
@@ -58,6 +59,7 @@ public class WordNet {
         }
         sap = new SAP(digraph);
     }
+
     // check input is null
     private void checkNull(Object a, Object b) {
         if (a == null || b == null) {
@@ -92,7 +94,7 @@ public class WordNet {
         if (!syn2Id.containsKey(nounA) || !syn2Id.containsKey(nounB))
             throw new IllegalArgumentException("input is not a noun");
         return String.join(" ",
-                           vertexs.get(sap.ancestor(syn2Id.get(nounA), syn2Id.get(nounB))));
+                vertexs.get(sap.ancestor(syn2Id.get(nounA), syn2Id.get(nounB))));
     }
 
 }

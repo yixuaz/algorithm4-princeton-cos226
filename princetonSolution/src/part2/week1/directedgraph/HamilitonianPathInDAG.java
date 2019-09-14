@@ -5,6 +5,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * if this DAG has a path which is one vertex linked by another one vertex, then it is a Hamiltonian path; other wise there are no hamiltonian path.
+ * then we can use topological sort, and check it meet the condition above.
+ */
 public class HamilitonianPathInDAG {
     public static List<Integer> solve(Set<Integer>[] DAG) {
         LinkedList<Integer> res = new LinkedList<>();

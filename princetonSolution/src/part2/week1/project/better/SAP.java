@@ -189,6 +189,7 @@ public class SAP {
         lastW = w;
         return lastAnc;
     }
+
     // if already find ans, return false;
     private boolean setupQueueAndNodeToStepsMap(Iterable<Integer> vi, Iterable<Integer> wi) {
         wQueueSize = 0;

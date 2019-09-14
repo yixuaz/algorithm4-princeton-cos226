@@ -25,7 +25,11 @@ Every Quiz problem, I will build a class and a test to verify the correctness.
 - [x] Week 3: quick sort (all 3 quiz)
 - [x] Week 4: priority queue (all 3 quiz, 1 project with 0 failed, 100 score with solve 4x4-49; Aggregate score: 100%)
 - [x] Week 4: symbol table (3 quiz)
-- [x] Week 5: balance search tree (3 quiz)
+- [x] Week 5: balance search tree (all 3 quiz)
+- [x] Week 5: geometric search (4 extra credit, 1 project with 0 failed, 100 score without rectHV in node)
+- [x] Week 6: hash table (all 2 quiz)
+- [x] Week 7: undirected graph (all 3 quiz)
+- [x] Week 7: directed graph (all 3 quiz, 1 project with 0 failed, 100 score with all bonus; Aggregate score: 106.67%)
 
 
 ## Extra Credit
@@ -35,3 +39,6 @@ Every Quiz problem, I will build a class and a test to verify the correctness.
 - [x] Week 4: priority queue: event driven simulation
 - [x] Week 4: 8 puzzle project: IDA* solve puzzle4x4-78.txt and puzzle4x4-80.txt
 - [x] Week 4: symbol table: morris preorder
+- [x] Week 5: intervalST, RangeSearchBST, RectangleIntersection, LineSegmentIntersection, SegmentTree
+- [x] Week 5: K-d Tree project: memory bonus
+- [x] Week 7: Word net project: 9 timing bonus 
