@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
+/**
+ * we could use stack to change recursion dfs to iteration dfs.
+ */
 public class NonrecursiveDFS {
     public static List<Integer> dfs(List<Integer>[] graph) {
         Deque<Integer> st = new ArrayDeque<>();

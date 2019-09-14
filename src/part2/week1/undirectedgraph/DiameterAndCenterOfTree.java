@@ -1,11 +1,14 @@
 package part2.week1.undirectedgraph;
 
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
-import java.util.Set;
 
+/**
+ * Diameter and center of a tree. Given a connected graph with no cycles
+ * <p>
+ * Diameter: design a linear-time algorithm to find the longest simple path in the graph.
+ * Center: design a linear-time algorithm to find a vertex such that its maximum distance
+ * from any other vertex is minimized.
+ */
 public class DiameterAndCenterOfTree {
     public static int diameter(List<Integer>[] graph) {
         // TODO: ADD YOUR CODE HERE

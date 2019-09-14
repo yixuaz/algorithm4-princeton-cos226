@@ -33,7 +33,7 @@ public class DiameterAndCenterOfTreeTest {
             List<Integer>[] graph = new List[i];
             int expect = build(graph);
             Assert.assertEquals(expect, DiameterAndCenterOfTree.diameter(graph));
-            Assert.assertEquals((expect + 1) / 2, dis(graph,DiameterAndCenterOfTree.center(graph)));
+            Assert.assertEquals((expect + 1) / 2, dis(graph, DiameterAndCenterOfTree.center(graph)));
         }
     }
 
@@ -48,7 +48,7 @@ public class DiameterAndCenterOfTreeTest {
         int tar = map[0];
         Queue<Integer> q = new LinkedList<>();
         q.offer(tar);
-        int used = 1, con = (int)Math.sqrt(n);
+        int used = 1, con = (int) Math.sqrt(n);
         Random r = new Random();
         while (used < n) {
             int i = 0, qsize = q.size();
@@ -67,10 +67,10 @@ public class DiameterAndCenterOfTreeTest {
 
     @Test
     public void randomTest2() {
-        for (int i = 1; i < 3000; i+=3) {
+        for (int i = 1; i < 3000; i += 3) {
             List<Integer>[] graph = new List[i];
             build2(graph);
-            Assert.assertEquals((DiameterAndCenterOfTree.diameter(graph) + 1) / 2, dis(graph,DiameterAndCenterOfTree.center(graph)));
+            Assert.assertEquals((DiameterAndCenterOfTree.diameter(graph) + 1) / 2, dis(graph, DiameterAndCenterOfTree.center(graph)));
         }
     }
 

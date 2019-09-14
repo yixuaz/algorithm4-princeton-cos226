@@ -1,12 +1,18 @@
 package part2.week1.undirectedgraph;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
+/**
+ * find the diameter, we need to use two bfs, the one is from any point as start point,
+ * then use bfs find the longest one point, then from this point, use another bfs,
+ * find another longest one. the path of this two point is longest path.
+ *
+ * to find the center, we could use this longest path, find the median point is the center
+ */
 public class DiameterAndCenterOfTree {
     public static int diameter(List<Integer>[] graph) {
         return findDiameter(graph)[2];

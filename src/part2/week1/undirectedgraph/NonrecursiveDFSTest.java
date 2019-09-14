@@ -10,6 +10,7 @@ import java.util.Random;
 
 public class NonrecursiveDFSTest {
     private final Random r = new Random();
+
     @Test
     public void randomTest() {
         int N = 2000;
@@ -21,7 +22,7 @@ public class NonrecursiveDFSTest {
 
     private List<Integer> expect(List<Integer>[] graph) {
         List<Integer> res = new ArrayList<>();
-        dfs(res,0, graph, new boolean[graph.length]);
+        dfs(res, 0, graph, new boolean[graph.length]);
         return res;
     }
 
