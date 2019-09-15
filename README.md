@@ -30,7 +30,8 @@ Every Quiz problem, I will build a class and a test to verify the correctness.
 - [x] Week 6: hash table (all 2 quiz)
 - [x] Week 7: undirected graph (all 3 quiz)
 - [x] Week 7: directed graph (all 3 quiz, 1 project with 0 failed, 100 score with all bonus; Aggregate score: 106.67%)
-
+- [x] Week 8: minimum spanning tree (all 3 quiz, 1 extra credit)
+- [x] Week 8: shortest path (all 3 quiz, 3 extra credit, 1 project with 0 failed, 100 score with all bonus; Aggregate score: 103.53%)
 
 ## Extra Credit
 - [x] Week 1: Percolation project: memory bonus
@@ -42,3 +43,6 @@ Every Quiz problem, I will build a class and a test to verify the correctness.
 - [x] Week 5: intervalST, RangeSearchBST, RectangleIntersection, LineSegmentIntersection, SegmentTree
 - [x] Week 5: K-d Tree project: memory bonus
 - [x] Week 7: Word net project: 9 timing bonus 
+- [x] Week 8: minimum spanning tree : eager prim
+- [x] Week 8: shortest path: arbitrage detection, campus bike ii, parallel job scheduling
+- [x] Week 8: seam carving project: 3 timing bonus

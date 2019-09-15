@@ -11,7 +11,7 @@ import java.util.Random;
 
 import static junit.framework.Assert.assertEquals;
 
-public class MonotonicShortestPathTest extends MonotonicShortestPathAllPosEdgeTest{
+public class MonotonicShortestPathTest extends MonotonicShortestPathAllPosEdgeTest {
     @Override
     public MonotonicSP getMSP() {
         return new MonotonicShortestPath();
@@ -19,11 +19,12 @@ public class MonotonicShortestPathTest extends MonotonicShortestPathAllPosEdgeTe
 
     @Test
     public void randomTestNegInc() {
-        testBaseFunc(13,1000,true,true);
+        testBaseFunc(13, 1000, true, true);
     }
+
     @Test
     public void randomTestNegDec() {
-        testBaseFunc(13,1000,true,false);
+        testBaseFunc(13, 1000, true, false);
     }
 
     @Test
@@ -45,25 +46,25 @@ public class MonotonicShortestPathTest extends MonotonicShortestPathAllPosEdgeTe
             double ans2 = new MonotonicShortestPathAllPosEdge().findDecrease(G, 0, V - 1, res);
             time2 += System.nanoTime() - st;
             Assert.assertEquals(0, Double.compare(ans1, ans2));
-            System.out.println(time1+","+time2);
+            System.out.println(time1 + "," + time2);
         }
     }
 
     @Test
     public void basicTest3() {
         EdgeWeightedDigraph G = new EdgeWeightedDigraph(4);
-        G.addEdge(new DirectedEdge(0,2,-42));
-        G.addEdge(new DirectedEdge(0,2,-5));
-        G.addEdge(new DirectedEdge(1,0,-49));
-        G.addEdge(new DirectedEdge(2,3,-33));
-        G.addEdge(new DirectedEdge(2,3,-48));
-        G.addEdge(new DirectedEdge(2,3,-42));
-        G.addEdge(new DirectedEdge(3,2,-42));
+        G.addEdge(new DirectedEdge(0, 2, -42));
+        G.addEdge(new DirectedEdge(0, 2, -5));
+        G.addEdge(new DirectedEdge(1, 0, -49));
+        G.addEdge(new DirectedEdge(2, 3, -33));
+        G.addEdge(new DirectedEdge(2, 3, -48));
+        G.addEdge(new DirectedEdge(2, 3, -42));
+        G.addEdge(new DirectedEdge(3, 2, -42));
         LinkedList<DirectedEdge> path = new LinkedList<>();
         System.out.println(getMSP().findDecrease(G, 0, 3, path));
         System.out.println(path);
         path.clear();
-        dfs(0,path,G,0d,3,false);
+        dfs(0, path, G, 0d, 3, false);
         System.out.println(expectPath);
         System.out.println(pathSum);
         assertEquals(pathSum, path);

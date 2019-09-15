@@ -1,6 +1,5 @@
 package part2.week2.shortestpath;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.junit.Assert;
 import org.junit.Test;
 import part2.week2.shortestpath.msp.util.DirectedEdge;
@@ -11,18 +10,16 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-import static org.junit.Assert.*;
-
 public class SecondShortestPathTest {
     @Test
     public void basicTest() {
         EdgeWeightedDigraph G = new EdgeWeightedDigraph(4);
-        G.addEdge(new DirectedEdge(0,1,1));
-        G.addEdge(new DirectedEdge(1,3,5));
-        G.addEdge(new DirectedEdge(0,2,2));
-        G.addEdge(new DirectedEdge(2,3,3));
+        G.addEdge(new DirectedEdge(0, 1, 1));
+        G.addEdge(new DirectedEdge(1, 3, 5));
+        G.addEdge(new DirectedEdge(0, 2, 2));
+        G.addEdge(new DirectedEdge(2, 3, 3));
         List<DirectedEdge> path = new ArrayList<>();
-        Assert.assertEquals( 6,(int) SecondShortestPath.solve(G,0,3,path));
+        Assert.assertEquals(6, (int) SecondShortestPath.solve(G, 0, 3, path));
         System.out.println(path);
     }
 
@@ -35,15 +32,15 @@ public class SecondShortestPathTest {
             int V = 2 + r.nextInt(N), E = r.nextInt(V * (V - 1));
             EdgeWeightedDigraph G = new EdgeWeightedDigraph(V, E);
             List<DirectedEdge> path = new ArrayList<>();
-            double secondShort = SecondShortestPath.solve(G,0,V - 1,path);
-            System.out.println("my second short : " +secondShort);
+            double secondShort = SecondShortestPath.solve(G, 0, V - 1, path);
+            System.out.println("my second short : " + secondShort);
             System.out.println(path);
-            List<Double> allNoCyclePathVal = getAllPath(G,0,V - 1);
+            List<Double> allNoCyclePathVal = getAllPath(G, 0, V - 1);
             double expectSeconPathLength = -1;
             if (allNoCyclePathVal.size() > 1) expectSeconPathLength = allNoCyclePathVal.get(1);
             System.out.println("no cycle second short : " + expectSeconPathLength);
-            if (expectSeconPathLength != -1 && Double.compare(expectSeconPathLength,secondShort) <= 0) {
-                Assert.assertEquals(0, Double.compare(expectSeconPathLength,secondShort));
+            if (expectSeconPathLength != -1 && Double.compare(expectSeconPathLength, secondShort) <= 0) {
+                Assert.assertEquals(0, Double.compare(expectSeconPathLength, secondShort));
             }
             if (expectSeconPathLength != -1)
                 Assert.assertTrue(checkPathIsCorrect(path, G, 0, V - 1));
@@ -68,9 +65,9 @@ public class SecondShortestPathTest {
 
     private List<Double> getAllPath(EdgeWeightedDigraph g, int s, int t) {
         List<Double> res = new ArrayList<>();
-        dfs(g,s,t,0, res, new boolean[g.V()]);
+        dfs(g, s, t, 0, res, new boolean[g.V()]);
         Collections.sort(res);
-        System.out.println("possible len:"+res);
+        System.out.println("possible len:" + res);
         return res;
     }
 
@@ -86,7 +83,7 @@ public class SecondShortestPathTest {
             if (seen[e.to()]) {
                 continue;
             }
-            dfs(g,e.to(), t, sum + e.weight(), res, seen);
+            dfs(g, e.to(), t, sum + e.weight(), res, seen);
         }
         seen[s] = false;
     }

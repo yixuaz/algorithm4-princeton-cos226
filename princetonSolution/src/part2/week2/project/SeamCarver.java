@@ -140,7 +140,7 @@ public class SeamCarver {
 
     private int[] doFindVerticalSeam(boolean shouldTranspose) {
         checkTranspose(shouldTranspose);
-        if (rows == 1) return new int[] { 0 };
+        if (rows == 1) return new int[]{0};
         double[][] distTo = new double[rows][cols];
         int[][] pathTo = new int[rows][cols + 2];
         for (int i = 1; i < rows - 1; i++) {

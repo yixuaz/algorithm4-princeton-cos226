@@ -4,11 +4,14 @@ import part2.week2.shortestpath.msp.util.DirectedEdge;
 import part2.week2.shortestpath.msp.util.EdgeWeightedDigraph;
 import part2.week2.shortestpath.secondshortestpath.util.DijkstraSP;
 
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
+/**
+ * the idea is same as Q2, we precompute the shortest path from s to every vertex; compute the shortest path
+ * from every vertex to t. then we iterate every edge, check without this edge,
+ * what is minimum from s to this edge from(), and this edge to() to t.
+ */
 public class ShortestPathWithSkippableEdge {
     public static double solve(EdgeWeightedDigraph G, int s, int t, List<DirectedEdge> result) {
         DijkstraSP dijkstraSP = new DijkstraSP(G, s);

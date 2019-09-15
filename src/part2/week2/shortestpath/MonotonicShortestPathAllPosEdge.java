@@ -2,11 +2,9 @@ package part2.week2.shortestpath;
 
 import part2.week2.shortestpath.msp.util.DirectedEdge;
 import part2.week2.shortestpath.msp.util.EdgeWeightedDigraph;
-import part2.week2.shortestpath.msp.util.EdgeWeightedDigraph.Vertex;
 import part2.week2.shortestpath.msp.util.MonotonicSP;
 
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 
 public class MonotonicShortestPathAllPosEdge implements MonotonicSP {
 
