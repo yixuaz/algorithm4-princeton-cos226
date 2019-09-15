@@ -1,9 +1,21 @@
 package part2.week2.mst;
 
-import edu.princeton.cs.algs4.EdgeWeightedGraph;
 import edu.princeton.cs.algs4.Edge;
+import edu.princeton.cs.algs4.EdgeWeightedGraph;
 import edu.princeton.cs.algs4.UF;
 
+/**
+ * we can consider all of the edge which weight is strictly less than that of e, if these graph can connect
+ * all of the vertex. then if we add this e, it must have a cycle.
+ * so if it can not connect all of the vertex, this edge is in mst or not depend on if it could connect two point
+ * which not connect before.
+ * <p>
+ * so achieve above, we have two solution.
+ * 1. use union find to simulate the situation above.
+ * 2. use dfs, start from one vertex from this edge,  then dfs, only choose the edge which weight smaller than this edge,
+ * check dfs can achieve another vertex from this edge.
+ * if can achieve, this edge should not in mst,or it will create a circle, and this edge is the largest weight.
+ */
 public class IsEdgeInMST {
     public static boolean solve(EdgeWeightedGraph graph, Edge edge) {
         return dfs(graph, edge.either(), edge.other(edge.either()), edge.weight(), new boolean[graph.V()]);

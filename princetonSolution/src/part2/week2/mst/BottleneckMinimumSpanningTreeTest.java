@@ -10,7 +10,6 @@ import part2.week2.mst.bottleneckmst.util.MyEdgeWeightedGraph;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 public class BottleneckMinimumSpanningTreeTest {
     @Test

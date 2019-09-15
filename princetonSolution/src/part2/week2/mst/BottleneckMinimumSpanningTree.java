@@ -13,13 +13,22 @@ import java.util.Map;
 import java.util.PriorityQueue;
 
 /**
- * from this quiz question, we allow use the data structure wrote in algs4, to save time.
+ * https://en.wikipedia.org/wiki/Minimum_bottleneck_spanning_tree
+ *
+ * i want to give a basic plan for O(n) algorithm
+ * 1. first check if the edge size is 1, just return the edge
+ * 2. find the median edge, and cut the graph with two edge set, one is less equal to median edge, another is larger than median edge.
+ * 3. if all the edge in small set could connected all the vertices. so we can run msbt(small set)
+ * 4. if not, we can keep all the edge in small set as part of result, then build a new graph to mark the connected
+ * component in small set as one vertex and use edge from big set. return msbt(new graph)
+ * and add the return result add to origin result.
  */
 public class BottleneckMinimumSpanningTree {
     public List<Edge> get(EdgeWeightedGraph graph) {
         MyEdgeWeightedGraph myEdgeWeightedGraph = new MyEdgeWeightedGraph(graph);
         return get(myEdgeWeightedGraph);
     }
+
     public List<Edge> get(MyEdgeWeightedGraph graph) {
         List<Edge> edges = graph.edges();
         PriorityQueue<Edge> pq = new PriorityQueue<>(edges);
@@ -38,6 +47,7 @@ public class BottleneckMinimumSpanningTree {
     public List<Edge> getInLinearTime(EdgeWeightedGraph graph) {
         return msbt(new MyEdgeWeightedGraph(graph));
     }
+
     public List<Edge> getInLinearTime(MyEdgeWeightedGraph graph) {
         return msbt(graph);
     }

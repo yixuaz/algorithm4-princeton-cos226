@@ -8,6 +8,12 @@ import edu.princeton.cs.algs4.PrimMST;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * first, we need to consider, this graph may not connected directly,
+ * so we need run completely PRIM to handle mst forest.
+ * then we need to use IndexMaxPQ to produce max spanning tree, because we need feedback edge set with minimum weight.
+ * after get max spanning tree, all of the edges which not in it should be in the result.
+ */
 public class MinWeightFeedbackEdgeSet {
     public static Set<Edge> solve(EdgeWeightedGraph graph) {
         int V = graph.V();
