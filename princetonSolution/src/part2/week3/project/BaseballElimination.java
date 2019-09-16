@@ -171,8 +171,7 @@ public class BaseballElimination {
                     StdOut.print(t + " ");
                 }
                 StdOut.println("}");
-            }
-            else {
+            } else {
                 StdOut.println(team + " is not eliminated");
             }
         }

@@ -1,11 +1,13 @@
 package part2.week3.maxflow;
 
-import edu.princeton.cs.algs4.FordFulkerson;
-
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * this question could be used to practice implementing fordfulkerson with int[][] graph.
+ * check the max flow is equal to n, (men + women equal to 2 n)
+ */
 public class PerfectMatchingInKBipartite {
     public static boolean solve(int[][] relationships, int k) {
         int n = relationships.length;

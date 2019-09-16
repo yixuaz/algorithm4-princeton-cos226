@@ -11,29 +11,31 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class FattestPathTest {
     @Test
     public void basicTest() {
         EdgeWeightedDigraph G = new EdgeWeightedDigraph(4);
-        G.addEdge(new DirectedEdge(0,1,350));
-        G.addEdge(new DirectedEdge(0,2,350));
-        G.addEdge(new DirectedEdge(1,3,200));
-        G.addEdge(new DirectedEdge(2,3,250));
+        G.addEdge(new DirectedEdge(0, 1, 350));
+        G.addEdge(new DirectedEdge(0, 2, 350));
+        G.addEdge(new DirectedEdge(1, 3, 200));
+        G.addEdge(new DirectedEdge(2, 3, 250));
         List<DirectedEdge> path = new ArrayList<>();
-        Assert.assertEquals(250, FattestPath.solve(G, path,0 ,3));
+        Assert.assertEquals(250, FattestPath.solve(G, path, 0, 3));
         System.out.println(path);
     }
+
     @Test
     public void basicTestNoPath() {
         EdgeWeightedDigraph G = new EdgeWeightedDigraph(4);
-        G.addEdge(new DirectedEdge(0,1,350));
-        G.addEdge(new DirectedEdge(0,2,350));
+        G.addEdge(new DirectedEdge(0, 1, 350));
+        G.addEdge(new DirectedEdge(0, 2, 350));
         List<DirectedEdge> path = new ArrayList<>();
-        Assert.assertEquals(Integer.MIN_VALUE, FattestPath.solve(G, path,0 ,3));
+        Assert.assertEquals(Integer.MIN_VALUE, FattestPath.solve(G, path, 0, 3));
         System.out.println(path);
     }
+
     @Test
     public void randomTest() {
         Random r = new Random();
@@ -47,9 +49,9 @@ public class FattestPathTest {
             DirectedEdge[] edgeTo = new DirectedEdge[G.V()];
             solveByDijkstra(G, 0, distTo, edgeTo);
             for (int j = 1; j < V; j++) {
-                int expect = distTo[j] == Double.NEGATIVE_INFINITY ? Integer.MIN_VALUE : (int)distTo[j];
+                int expect = distTo[j] == Double.NEGATIVE_INFINITY ? Integer.MIN_VALUE : (int) distTo[j];
                 List<DirectedEdge> test = new ArrayList<>();
-                assertEquals(expect, FattestPath.solve(G, test,0 ,j));
+                assertEquals(expect, FattestPath.solve(G, test, 0, j));
                 if (expect != Integer.MIN_VALUE) {
                     System.out.println(test);
                     System.out.println(pathTo(j, edgeTo));
@@ -82,7 +84,7 @@ public class FattestPathTest {
             distTo[w] = Math.min(distTo[v], e.weight());
             edgeTo[w] = e;
             if (pq.contains(w)) pq.increaseKey(w, distTo[w]);
-            else                pq.insert(w, distTo[w]);
+            else pq.insert(w, distTo[w]);
         }
     }
 

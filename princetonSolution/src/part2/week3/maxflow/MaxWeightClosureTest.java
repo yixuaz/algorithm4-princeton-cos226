@@ -11,17 +11,46 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class MaxWeightClosureTest {
     @Test
+    public void allPositiveTest() {
+        Vertex vertex0 = new Vertex(0, 8);
+        Vertex vertex1 = new Vertex(1, 9);
+        Vertex vertex2 = new Vertex(2, 20);
+        Vertex vertex3 = new Vertex(3, 12);
+        List<Vertex> vertices = Arrays.asList(vertex0, vertex1, vertex2,
+                vertex3);
+        Set<Vertex> ans = new HashSet<>();
+        Assert.assertEquals(49, MaxWeightClosure.solve(vertices, ans));
+        System.out.println(ans);
+    }
+
+    @Test
+    public void allNegativeTest() {
+        Vertex vertex0 = new Vertex(0, -8);
+        Vertex vertex1 = new Vertex(1, -9);
+        Vertex vertex2 = new Vertex(2, -20);
+        Vertex vertex3 = new Vertex(3, -12);
+        vertex1.addEdge(vertex0);
+        vertex2.addEdge(vertex0);
+        vertex3.addEdge(vertex0);
+        List<Vertex> vertices = Arrays.asList(vertex0, vertex1, vertex2,
+                vertex3);
+        Set<Vertex> ans = new HashSet<>();
+        Assert.assertEquals(0, MaxWeightClosure.solve(vertices, ans));
+        System.out.println(ans);
+    }
+
+    @Test
     public void basicTest() {
-        Vertex vertex0 = new Vertex(0,8);
-        Vertex vertex1 = new Vertex(1,-9);
-        Vertex vertex2 = new Vertex(2,-20);
-        Vertex vertex3 = new Vertex(3,12);
-        Vertex vertex4 = new Vertex(4,-10);
-        Vertex vertex5 = new Vertex(5,5);
+        Vertex vertex0 = new Vertex(0, 8);
+        Vertex vertex1 = new Vertex(1, -9);
+        Vertex vertex2 = new Vertex(2, -20);
+        Vertex vertex3 = new Vertex(3, 12);
+        Vertex vertex4 = new Vertex(4, -10);
+        Vertex vertex5 = new Vertex(5, 5);
         vertex0.addEdge(vertex1);
         vertex0.addEdge(vertex3);
         vertex1.addEdge(vertex4);
@@ -65,9 +94,9 @@ public class MaxWeightClosureTest {
         Vertex nowVertex = vertices.get(curIdx);
         int ans1 = dfs(vertices, curIdx + 1, sum, maxClosure);
         maxClosure.add(nowVertex);
-        int ans2 = dfs(vertices, curIdx + 1, sum + nowVertex.weight() , maxClosure);
+        int ans2 = dfs(vertices, curIdx + 1, sum + nowVertex.weight(), maxClosure);
         maxClosure.remove(nowVertex);
-        return Math.max(ans1,ans2);
+        return Math.max(ans1, ans2);
     }
 
     private int check(Set<Vertex> ans, List<Vertex> vertices) {

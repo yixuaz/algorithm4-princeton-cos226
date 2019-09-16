@@ -21,10 +21,10 @@ public class PerfectMatchingInKBipartiteTest {
         return dfs(relationship, k, n, 0, 0, n / 2, new int[n]);
     }
 
-    private boolean dfs(int[][] relationship, int k, int n, int curIdx, int curK,int lastPt, int[] knowHer) {
+    private boolean dfs(int[][] relationship, int k, int n, int curIdx, int curK, int lastPt, int[] knowHer) {
         if (curIdx == n / 2) return true;
         if (curK == k) {
-            if (dfs(relationship, k,n,curIdx + 1, 0, n / 2, knowHer)) return true;
+            if (dfs(relationship, k, n, curIdx + 1, 0, n / 2, knowHer)) return true;
         } else {
             for (int i = lastPt; i < n; i++) {
                 if (knowHer[i] == k) continue;
