@@ -7,6 +7,7 @@ public class LSDRadixSorter implements ISorter {
     private static final int UNIT = 8;
     private static final int R = 256;
     private static final int MASK = 255;
+
     @Override
     public void sort(int[] arr) {
         // TODO: ADD YOUR CODE HERE

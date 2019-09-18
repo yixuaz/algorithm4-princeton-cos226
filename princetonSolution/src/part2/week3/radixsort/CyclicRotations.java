@@ -7,6 +7,10 @@ import part2.week3.radixsort.suffixarray.SuffixArray;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * foreach string, we could build suffix string sorting array, and use the first string in array
+ * as the finger print, check the finger print have same, we could use hashset to achieve it.
+ */
 public class CyclicRotations {
 
     public static boolean solve(String[] inputs) {

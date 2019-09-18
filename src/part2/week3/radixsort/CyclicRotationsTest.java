@@ -9,13 +9,14 @@ import java.util.Random;
 public class CyclicRotationsTest {
     @Test
     public void basicTest() {
-        String[] input = {"algorithms","polynomial","sortsuffix","boyermoore","structures","minimumcut",
-                "suffixsort","stackstack","binaryheap","digraphdfs","stringsort","digraphbfs"};
+        String[] input = {"algorithms", "polynomial", "sortsuffix", "boyermoore", "structures", "minimumcut",
+                "suffixsort", "stackstack", "binaryheap", "digraphdfs", "stringsort", "digraphbfs"};
         Assert.assertTrue(CyclicRotations.solve(input));
-        input = new String[]{"algorithms","polynomial","boyermoore","structures","minimumcut",
-                "suffixsort","stackstack","binaryheap","digraphdfs","stringsort","digraphbfs"};
+        input = new String[]{"algorithms", "polynomial", "boyermoore", "structures", "minimumcut",
+                "suffixsort", "stackstack", "binaryheap", "digraphdfs", "stringsort", "digraphbfs"};
         Assert.assertEquals(false, CyclicRotations.solve(input));
     }
+
     @Test(timeout = 1500)
     public void randomTest() {
         int N = 3;

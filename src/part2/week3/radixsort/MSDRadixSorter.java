@@ -34,11 +34,12 @@ public class MSDRadixSorter implements ISorter {
 
     private void sort(int[] arr, int s, int e, int d, int[] aux) {
         if (e - s <= CUTOFF) {
-            insertSorter.sort(arr,s,e);
+            insertSorter.sort(arr, s, e);
             return;
         }
         // TODO: ADD YOUR CODE HERE
     }
+
     private int valAt(int val, int pos) {
         return (val >> (BITS - (pos + 1) * UNIT)) & MASK;
     }

@@ -15,7 +15,7 @@ public class AmericanFlagSortTest {
             if (i % 9 == 0) N <<= 1;
             int R = i + 2;
             int[] set = new int[R];
-            int[] arr = Shuffler.getRandomArray(N,0, R - 1);
+            int[] arr = Shuffler.getRandomArray(N, 0, R - 1);
             for (int j : arr) set[j]++;
             AmericanFlagSort.solve(arr, R);
             set[arr[0]]--;

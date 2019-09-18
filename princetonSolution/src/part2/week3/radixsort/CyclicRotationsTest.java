@@ -1,25 +1,22 @@
 package part2.week3.radixsort;
 
 import commonutil.RandomStringBuilder;
-import edu.princeton.cs.algs4.Quick3string;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.Random;
-
-import static org.junit.Assert.*;
 
 public class CyclicRotationsTest {
     @Test
     public void basicTest() {
-        String[] input = {"algorithms","polynomial","sortsuffix","boyermoore","structures","minimumcut",
-                "suffixsort","stackstack","binaryheap","digraphdfs","stringsort","digraphbfs"};
+        String[] input = {"algorithms", "polynomial", "sortsuffix", "boyermoore", "structures", "minimumcut",
+                "suffixsort", "stackstack", "binaryheap", "digraphdfs", "stringsort", "digraphbfs"};
         Assert.assertTrue(CyclicRotations.solve(input));
-        input = new String[]{"algorithms","polynomial","boyermoore","structures","minimumcut",
-                "suffixsort","stackstack","binaryheap","digraphdfs","stringsort","digraphbfs"};
+        input = new String[]{"algorithms", "polynomial", "boyermoore", "structures", "minimumcut",
+                "suffixsort", "stackstack", "binaryheap", "digraphdfs", "stringsort", "digraphbfs"};
         Assert.assertEquals(false, CyclicRotations.solve(input));
     }
+
     @Test(timeout = 1500)
     public void randomTest() {
         int N = 3;

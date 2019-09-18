@@ -4,12 +4,10 @@ import commonutil.Shuffler;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class TwoSumTest {
     @Test
@@ -25,17 +23,17 @@ public class TwoSumTest {
         assertEquals(false, test);
         test = TwoSum.solve(new int[]{-2}, -2);
         assertEquals(false, test);
-        test = TwoSum.solve(new int[]{-3,-4,-5}, -2);
+        test = TwoSum.solve(new int[]{-3, -4, -5}, -2);
         assertEquals(false, test);
     }
 
     @Test
     public void haveAnsTest() {
-        boolean test = TwoSum.solve(new int[]{0,0}, 0);
+        boolean test = TwoSum.solve(new int[]{0, 0}, 0);
         assertEquals(true, test);
-        test = TwoSum.solve(new int[]{1,1,3,4}, 2);
+        test = TwoSum.solve(new int[]{1, 1, 3, 4}, 2);
         assertEquals(true, test);
-        test = TwoSum.solve(new int[]{-3,-4,-5}, -8);
+        test = TwoSum.solve(new int[]{-3, -4, -5}, -8);
         assertEquals(true, test);
     }
 
@@ -44,8 +42,8 @@ public class TwoSumTest {
         int N = 10000;
         for (int i = 0; i < 500; i++) {
             if (i % 100 == 99) N <<= 1;
-            int[] arr = Shuffler.getRandomArray(N,-N, N);
-            Assert.assertEquals(expect(arr, 0), TwoSum.solve(arr,0));
+            int[] arr = Shuffler.getRandomArray(N, -N, N);
+            Assert.assertEquals(expect(arr, 0), TwoSum.solve(arr, 0));
             System.out.println("pass " + N);
         }
     }

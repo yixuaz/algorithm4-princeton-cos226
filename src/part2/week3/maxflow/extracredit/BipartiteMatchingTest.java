@@ -33,6 +33,8 @@ public class BipartiteMatchingTest {
         input.put("Eliza", new HashSet<>(Arrays.asList("Amazon", "Yahoo")));
         Map<String, String> test = BipartiteMatching.solve(input);
         Assert.assertTrue(test.isEmpty());
+
+
     }
 
 }

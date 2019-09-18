@@ -6,7 +6,7 @@ public class TwoSum {
         sorter.sort(arr);
         int i = 0, j = arr.length - 1;
         while (i <= j) {
-            long cur = (long)arr[i] + arr[j];
+            long cur = (long) arr[i] + arr[j];
             if (cur > tar) j--;
             else if (cur < tar) i++;
             else return true;
