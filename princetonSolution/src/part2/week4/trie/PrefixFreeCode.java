@@ -1,5 +1,9 @@
 package part2.week4.trie;
 
+/**
+ * insert the binary strings into a 2-way trie. then during insert check the path could not have the node
+ * which have value, and when it reach end, there should not exists more children in the node.
+ */
 public class PrefixFreeCode {
     public static boolean isPrefixFree(String[] input) {
         TrieNode root = new TrieNode();
@@ -21,6 +25,7 @@ public class PrefixFreeCode {
         }
         return true;
     }
+
     private static class TrieNode {
         boolean isEnd = false;
         TrieNode[] chds = new TrieNode[2];
