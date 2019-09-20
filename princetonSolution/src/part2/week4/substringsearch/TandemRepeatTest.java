@@ -6,16 +6,16 @@ import org.junit.Test;
 
 import java.util.Random;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class TandemRepeatTest {
     @Test
     public void basicTest() {
-        assertEquals(2,TandemRepeat.solve("abcab","abcabcababcaba"));
-        assertEquals(3,TandemRepeat.solve("abcab","abcababcababcab"));
-        assertEquals(0,TandemRepeat.solve("abcab","b"));
-        assertEquals(0,TandemRepeat.solve("abcab","abcbab"));
-        assertEquals(-1,TandemRepeat.solve("","b"));
+        assertEquals(2, TandemRepeat.solve("abcab", "abcabcababcaba"));
+        assertEquals(3, TandemRepeat.solve("abcab", "abcababcababcab"));
+        assertEquals(0, TandemRepeat.solve("abcab", "b"));
+        assertEquals(0, TandemRepeat.solve("abcab", "abcbab"));
+        assertEquals(-1, TandemRepeat.solve("", "b"));
     }
 
     @Test

@@ -11,24 +11,25 @@ public class LongestPalindromicSubStrTest {
     @Test
     public void basicTest() {
         String test = "cabad";
-        Assert.assertEquals("aba",LongestPalindromicSubStr.findTimeN(test));
-        Assert.assertEquals("aba",LongestPalindromicSubStr.findTimeNlgN(test));
+        Assert.assertEquals("aba", LongestPalindromicSubStr.findTimeN(test));
+        Assert.assertEquals("aba", LongestPalindromicSubStr.findTimeNlgN(test));
         test = "cabac";
-        Assert.assertEquals("cabac",LongestPalindromicSubStr.findTimeN(test));
-        Assert.assertEquals("cabac",LongestPalindromicSubStr.findTimeNlgN(test));
+        Assert.assertEquals("cabac", LongestPalindromicSubStr.findTimeN(test));
+        Assert.assertEquals("cabac", LongestPalindromicSubStr.findTimeNlgN(test));
         test = "";
-        Assert.assertEquals("",LongestPalindromicSubStr.findTimeN(test));
-        Assert.assertEquals("",LongestPalindromicSubStr.findTimeNlgN(test));
+        Assert.assertEquals("", LongestPalindromicSubStr.findTimeN(test));
+        Assert.assertEquals("", LongestPalindromicSubStr.findTimeNlgN(test));
         test = "abc";
-        Assert.assertEquals("a",LongestPalindromicSubStr.findTimeN(test));
-        Assert.assertEquals("a",LongestPalindromicSubStr.findTimeNlgN(test));
+        Assert.assertEquals("a", LongestPalindromicSubStr.findTimeN(test));
+        Assert.assertEquals("a", LongestPalindromicSubStr.findTimeNlgN(test));
         test = "abb";
-        Assert.assertEquals("bb",LongestPalindromicSubStr.findTimeN(test));
-        Assert.assertEquals("bb",LongestPalindromicSubStr.findTimeNlgN(test));
+        Assert.assertEquals("bb", LongestPalindromicSubStr.findTimeN(test));
+        Assert.assertEquals("bb", LongestPalindromicSubStr.findTimeNlgN(test));
         test = "abbddb";
-        Assert.assertEquals("bddb",LongestPalindromicSubStr.findTimeN(test));
-        Assert.assertEquals("bddb",LongestPalindromicSubStr.findTimeNlgN(test));
+        Assert.assertEquals("bddb", LongestPalindromicSubStr.findTimeN(test));
+        Assert.assertEquals("bddb", LongestPalindromicSubStr.findTimeNlgN(test));
     }
+
     @Test
     public void randomTest() {
         for (int i = 100; i < 1000; i++) {
@@ -38,6 +39,7 @@ public class LongestPalindromicSubStrTest {
             System.out.println(i + expect);
         }
     }
+
     @Test(timeout = 2500)
     public void performanceTest() {
         for (int i = 1000; i < 8000000; i <<= 1) {

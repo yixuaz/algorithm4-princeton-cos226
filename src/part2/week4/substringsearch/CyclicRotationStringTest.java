@@ -15,6 +15,7 @@ public class CyclicRotationStringTest {
         Assert.assertFalse(CyclicRotationString.isCyclicRotation("abc", "bac"));
         Assert.assertFalse(CyclicRotationString.isCyclicRotation("abc", "ab"));
     }
+
     @Test
     public void randomTest() {
         Random r = new Random();
@@ -22,7 +23,7 @@ public class CyclicRotationStringTest {
             int len = (int) Math.sqrt(i);
             String cur = RandomStringBuilder.randomStringLowerCase(len);
             if (r.nextBoolean()) {
-                Assert.assertTrue(CyclicRotationString.isCyclicRotation(cur, cur.substring(len / 2) + cur.substring(0,len / 2)));
+                Assert.assertTrue(CyclicRotationString.isCyclicRotation(cur, cur.substring(len / 2) + cur.substring(0, len / 2)));
             } else {
                 Assert.assertFalse(CyclicRotationString.isCyclicRotation(cur, RandomStringBuilder.randomStringLowerCase(len)));
             }

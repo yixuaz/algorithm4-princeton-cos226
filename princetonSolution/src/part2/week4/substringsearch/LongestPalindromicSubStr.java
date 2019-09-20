@@ -1,7 +1,19 @@
 package part2.week4.substringsearch;
 
-import edu.princeton.cs.algs4.RabinKarp;
-
+/**
+ * nlogn solution is using karp-rabin and binary search. the thing we could know, longer palindromic string contains
+ * shorter palindromic string. thus binary search could used. if we cannot find palindromic string, we need to
+ * end = mid - 1; if we can find palindromic string, we could try longer, start = mid + 1;
+ * the important thing we need to check odd and even number both in one binary search.
+ *
+ * the next thing we need to design an algorithm to given a length L, check palindromic exists or not.
+ * this could solved by karp-rabin.
+ * another hard point is that we could not use divide operation,
+ * because it will loss accuracy. what should maintain is two base. details see the code
+ *
+ * O(n) solution also called manacher algorithm.
+ * https://mp.weixin.qq.com/s/EiJum3-44TqXZN4apuSQUQ
+ */
 public class LongestPalindromicSubStr {
 
     // assumption, input str only have lower case a b c d letter
@@ -72,7 +84,7 @@ public class LongestPalindromicSubStr {
         int center = 0, boundary = 0, maxLen = 0, resCenter = 0;
         for (int i = 1; i < T.length - 1; i++) {
             int iMirror = 2 * center - i;
-            P[i] = (i < boundary) ? Math.min(boundary - i, P[iMirror]): 0;
+            P[i] = (i < boundary) ? Math.min(boundary - i, P[iMirror]) : 0;
             while (i - P[i] - 1 >= 0 && i + P[i] + 1 < T.length
                     && T[i - P[i] - 1] == T[i + P[i] + 1])
                 P[i]++;
@@ -91,19 +103,22 @@ public class LongestPalindromicSubStr {
 
     private static int st = 0;
     private static int maxLen = 0;
+
     public static String findTimeN2(String s) {
         st = maxLen = 0;
         char[] cs = s.toCharArray();
         for (int i = 0; i < cs.length; i++) {
-            find(cs,i,i);
-            find(cs,i,i+1);
+            find(cs, i, i);
+            find(cs, i, i + 1);
         }
-        return s.substring(st,st+maxLen);
+        return s.substring(st, st + maxLen);
     }
-    private static void  find(char[] cs, int i, int j) {
+
+    private static void find(char[] cs, int i, int j) {
         while (i >= 0 && j < cs.length) {
             if (cs[i] != cs[j]) break;
-            i--;j++;
+            i--;
+            j++;
         }
         if (j - i - 1 > maxLen) {
             maxLen = j - i - 1;
