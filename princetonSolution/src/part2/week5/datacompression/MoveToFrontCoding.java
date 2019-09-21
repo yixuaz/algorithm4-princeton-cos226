@@ -4,8 +4,17 @@ import edu.princeton.cs.algs4.BinaryStdIn;
 import edu.princeton.cs.algs4.BinaryStdOut;
 import edu.princeton.cs.algs4.RedBlackBST;
 
+/**
+ * this problem could be solved by redblack tree, rank and select function.
+ * rank function is to give a key, return the rank of the key.
+ * select function is to give a rank, return the key which is on this rank.
+ *
+ * if we want to move to front, we can remove it from red black tree, and mark a (min - 1) key, to add this node back.
+ * therefore, we need maintain a map for key(is 'a'-'z'), value is (key in red black tree)
+ */
 public class MoveToFrontCoding {
     private static final int R = 256;
+
     public static void encode() {
         RedBlackBST<Integer, Character> rbt = new RedBlackBST<>();
         int[] map = new int[R];
@@ -23,6 +32,7 @@ public class MoveToFrontCoding {
         }
         BinaryStdOut.close();
     }
+
     public static void decode() {
         RedBlackBST<Integer, Character> rbt = new RedBlackBST<>();
         for (char i = 0; i < R; i++) {

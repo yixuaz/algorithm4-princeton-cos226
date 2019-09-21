@@ -49,6 +49,7 @@ public class TernaryHuffmanCodesTest {
             testTemplate(true, input);
         }
     }
+
     @Test
     public void randomTestBase62() throws IOException {
         int N = 10;
@@ -59,12 +60,13 @@ public class TernaryHuffmanCodesTest {
             testTemplate(false, input);
         }
     }
+
     @Test
     public void randomTest012() throws IOException {
         int N = 10;
         for (int i = 0; i < 1000; i++) {
             if (i % 100 == 99) N <<= 1;
-            String input = RandomStringBuilder.randomString(N,"012");
+            String input = RandomStringBuilder.randomString(N, "012");
             testTemplate(true, input);
             testTemplate(false, input);
         }

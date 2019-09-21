@@ -7,6 +7,6 @@ public class ExponentialSizeDFA {
     // hint: nth-to-the-last bit equals 0
     public static boolean match(String input) {
         int n = input.length();
-        return Pattern.matches("(0|1)*0(0|1){"+(n-1)+"}", input);
+        return Pattern.matches("(0|1)*0(0|1){" + (n - 1) + "}", input);
     }
 }

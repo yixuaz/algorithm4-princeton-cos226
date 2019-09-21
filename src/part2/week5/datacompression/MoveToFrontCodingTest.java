@@ -25,7 +25,7 @@ public class MoveToFrontCodingTest {
     @Test
     public void randomTest() throws UnsupportedEncodingException {
         for (int i = 100; i < 409600; i <<= 1) {
-            String input = RandomStringBuilder.randomString(i,"&");
+            String input = RandomStringBuilder.randomString(i, "&");
             testTemplate(input);
 
             input = RandomStringBuilder.randomStringLowerCase(i);
@@ -49,12 +49,13 @@ public class MoveToFrontCodingTest {
 
         assertArrayEquals(expect.toByteArray(), test.toByteArray());
 
-        ByteArrayOutputStream origin =prepareTestEnv(test.toString(StandardCharsets.US_ASCII.name()));
+        ByteArrayOutputStream origin = prepareTestEnv(test.toString(StandardCharsets.US_ASCII.name()));
         MoveToFrontCoding.decode();
         BinaryStdIn.close();
 
         assertArrayEquals(input.getBytes(StandardCharsets.US_ASCII), origin.toByteArray());
     }
+
     private ByteArrayOutputStream prepareTestEnv(String input) throws UnsupportedEncodingException {
         System.setIn(new ByteArrayInputStream(input.getBytes(StandardCharsets.US_ASCII)));
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

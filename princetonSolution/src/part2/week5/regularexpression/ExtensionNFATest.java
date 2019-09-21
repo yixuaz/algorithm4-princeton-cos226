@@ -11,8 +11,8 @@ public class ExtensionNFATest {
         Assert.assertTrue(nfa.recognizes("ag"));
         Assert.assertTrue(nfa.recognizes("bcg"));
         Assert.assertTrue(nfa.recognizes("cg"));
-        Assert.assertTrue(nfa.recognizes("ag"));
-        Assert.assertTrue(nfa.recognizes("bcg"));
+        Assert.assertTrue(nfa.recognizes("bzg"));
+        Assert.assertTrue(nfa.recognizes("dag"));
         Assert.assertTrue(nfa.recognizes("decg"));
         Assert.assertTrue(nfa.recognizes("eeecg"));
         Assert.assertTrue(nfa.recognizes("dddb0g"));

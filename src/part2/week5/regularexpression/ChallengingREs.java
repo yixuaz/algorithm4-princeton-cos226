@@ -46,6 +46,7 @@ public enum ChallengingREs {
             return "";
         }
     }, EQUAL_NUM_SUBSTR_FORM_01_AND_10 { // youtube yuFF0gXC6HU
+
         @Override
         String getRegex() {
             // TODO: ADD YOUR REGEX HERE IF IMPOSSIBLE RETURN null
@@ -54,7 +55,9 @@ public enum ChallengingREs {
     };
 
     private static final String IMPOSSIBLE = null;
+
     abstract String getRegex();
+
     public boolean match(String input) {
         if (getRegex() == IMPOSSIBLE) return false;
         return Pattern.matches(getRegex(), input);

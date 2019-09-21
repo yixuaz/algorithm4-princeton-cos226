@@ -34,6 +34,8 @@ Every Quiz problem, I will build a class and a test to verify the correctness.
 - [x] Week 8: shortest path (all 3 quiz, 3 extra credit, 1 project with 0 failed, 100 score with all bonus; Aggregate score: 103.53%)
 - [x] Week 9: trie (1 quiz, 2 extra credit)
 - [x] Week 9: substring search (all 3 quiz, 1 extra credit, 1 project with 0 failed, 100 score with all bonus; Aggregate score: 102.22%)
+- [x] Week 10: regular expression (all 3 quiz)
+- [x] Week 10: data compression (2 quiz, 1 extra credit, 1 project with 0 failed; Aggregate score: 100.00%)
 
 ## Extra Credit
 - [x] Week 1: Percolation project: memory bonus
@@ -51,3 +53,5 @@ Every Quiz problem, I will build a class and a test to verify the correctness.
 - [x] Week 9: trie: longest prefix, t9 texting
 - [x] Week 9: substring search: search multiple pattern
 - [x] Week 9: boggle game project: 1 timing bonus
+- [x] Week 10: data compression: LZW implementation
+- [x] Week 10: burrows wheeler project: better circular suffix array

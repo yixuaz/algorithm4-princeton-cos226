@@ -11,8 +11,8 @@ public class ExponentialSizeDFATest {
         Random r = new Random();
         for (int i = 0; i < 1000; i++) {
             String s = Integer.toBinaryString(r.nextInt(Integer.MAX_VALUE));
-            Assert.assertTrue(ExponentialSizeDFA.match("0"+s));
-            Assert.assertFalse(ExponentialSizeDFA.match("1"+s));
+            Assert.assertTrue(ExponentialSizeDFA.match("0" + s));
+            Assert.assertFalse(ExponentialSizeDFA.match("1" + s));
         }
     }
 

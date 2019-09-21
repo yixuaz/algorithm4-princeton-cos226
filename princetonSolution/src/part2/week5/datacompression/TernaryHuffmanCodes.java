@@ -2,14 +2,23 @@ package part2.week5.datacompression;
 
 import edu.princeton.cs.algs4.BinaryStdIn;
 import edu.princeton.cs.algs4.BinaryStdOut;
-import edu.princeton.cs.algs4.Huffman;
 
 import java.util.PriorityQueue;
 
+/**
+ * Combine smallest 3 probabilities at each step (instead of smallest 2).
+ * which mean we need poll 3 element from PQ, and gernerate one node.
+ * another thing is in binary alphabet, we can use one bit to know in left or right child,
+ * now we need two bit to distinguish it is in left, mid or right.
+ * <p>
+ * to handle the case when the number of symbols is not of the form 3+2k for some integer k.
+ * we may need to add some 0 freq node to meet this requirement
+ */
 public class TernaryHuffmanCodes {
     private static final int R = 256;
 
-    private TernaryHuffmanCodes() { }
+    private TernaryHuffmanCodes() {
+    }
 
     private static class Node implements Comparable<Node> {
         private final char ch;
@@ -17,9 +26,9 @@ public class TernaryHuffmanCodes {
         private final Node left, mid, right;
 
         Node(char ch, int freq, Node left, Node mid, Node right) {
-            this.ch    = ch;
-            this.freq  = freq;
-            this.left  = left;
+            this.ch = ch;
+            this.freq = freq;
+            this.left = left;
             this.mid = mid;
             this.right = right;
         }
@@ -59,7 +68,7 @@ public class TernaryHuffmanCodes {
         for (char c : cs) {
             for (char j : st[c].toCharArray()) {
                 if (j == '0') {
-                    BinaryStdOut.write(0,2);
+                    BinaryStdOut.write(0, 2);
                 } else if (j == '1') {
                     BinaryStdOut.write(1, 2);
                 } else if (j == '2') {
@@ -91,9 +100,9 @@ public class TernaryHuffmanCodes {
             int len = sb.length();
             sb.append('0');
             buildCode(st, x.left, sb);
-            sb.setCharAt(len,'1');
+            sb.setCharAt(len, '1');
             buildCode(st, x.mid, sb);
-            sb.setCharAt(len,'2');
+            sb.setCharAt(len, '2');
             buildCode(st, x.right, sb);
             sb.deleteCharAt(len);
         } else {
@@ -103,24 +112,17 @@ public class TernaryHuffmanCodes {
 
     private static Node buildTrie(int[] freq) {
         PriorityQueue<Node> pq = new PriorityQueue<>();
-        //int validPos = -1;
         for (int i = 0; i < R; i++) {
             if (freq[i] > 0) {
-                pq.offer(new Node((char) i, freq[i],null, null, null));
-            } /*else {
-                validPos = i;
-            }*/
+                pq.offer(new Node((char) i, freq[i], null, null, null));
+            }
         }
 
         while (pq.size() < 3 || pq.size() % 2 == 0) {
-//            if (validPos == -1) {
-//                throw new IllegalArgumentException("fail to Compress Because no valid position for freq[char]");
-//            }
-            pq.offer(new Node('\0', 0, null, null,null)); // why need valid pos here
-
+            pq.offer(new Node('\0', 0, null, null, null));
         }
         while (pq.size() > 1) {
-            Node left  = pq.poll();
+            Node left = pq.poll();
             Node mid = pq.poll();
             Node right = pq.poll();
             Node parent = new Node('\0', left.freq + mid.freq + right.freq, left, mid, right);

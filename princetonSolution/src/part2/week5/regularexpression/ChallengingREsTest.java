@@ -7,40 +7,44 @@ public class ChallengingREsTest {
 
     @Test
     public void EXCEPT_11_OR_111() {
-        Assert.assertEquals(false,ChallengingREs.EXCEPT_11_OR_111.match("11"));
-        Assert.assertEquals(false,ChallengingREs.EXCEPT_11_OR_111.match("111"));
-        Assert.assertEquals(true,ChallengingREs.EXCEPT_11_OR_111.match("1111"));
-        Assert.assertEquals(true,ChallengingREs.EXCEPT_11_OR_111.match("101"));
+        Assert.assertEquals(false, ChallengingREs.EXCEPT_11_OR_111.match("11"));
+        Assert.assertEquals(false, ChallengingREs.EXCEPT_11_OR_111.match("111"));
+        Assert.assertEquals(true, ChallengingREs.EXCEPT_11_OR_111.match("1111"));
+        Assert.assertEquals(true, ChallengingREs.EXCEPT_11_OR_111.match("101"));
     }
+
     @Test
     public void ODD_BIT_POS_IS_1() {
-        Assert.assertEquals(true,ChallengingREs.ODD_BIT_POS_IS_1.match("1"));
-        Assert.assertEquals(true,ChallengingREs.ODD_BIT_POS_IS_1.match("10"));
-        Assert.assertEquals(true,ChallengingREs.ODD_BIT_POS_IS_1.match("11"));
-        Assert.assertEquals(true,ChallengingREs.ODD_BIT_POS_IS_1.match("111"));
-        Assert.assertEquals(false,ChallengingREs.ODD_BIT_POS_IS_1.match("011"));
-        Assert.assertEquals(true,ChallengingREs.ODD_BIT_POS_IS_1.match("1010"));
-        Assert.assertEquals(false,ChallengingREs.ODD_BIT_POS_IS_1.match("1101"));
-        Assert.assertEquals(true,ChallengingREs.ODD_BIT_POS_IS_1.match(""));
+        Assert.assertEquals(true, ChallengingREs.ODD_BIT_POS_IS_1.match("1"));
+        Assert.assertEquals(true, ChallengingREs.ODD_BIT_POS_IS_1.match("10"));
+        Assert.assertEquals(true, ChallengingREs.ODD_BIT_POS_IS_1.match("11"));
+        Assert.assertEquals(true, ChallengingREs.ODD_BIT_POS_IS_1.match("111"));
+        Assert.assertEquals(false, ChallengingREs.ODD_BIT_POS_IS_1.match("011"));
+        Assert.assertEquals(true, ChallengingREs.ODD_BIT_POS_IS_1.match("1010"));
+        Assert.assertEquals(false, ChallengingREs.ODD_BIT_POS_IS_1.match("1101"));
+        Assert.assertEquals(true, ChallengingREs.ODD_BIT_POS_IS_1.match(""));
     }
+
     @Test
     public void AT_LEAST_TWO_0S_AT_MOST_1() {
-        Assert.assertEquals(false,ChallengingREs.AT_LEAST_TWO_0S_AT_MOST_1.match("1"));
-        Assert.assertEquals(false,ChallengingREs.AT_LEAST_TWO_0S_AT_MOST_1.match("10"));
-        Assert.assertEquals(true,ChallengingREs.AT_LEAST_TWO_0S_AT_MOST_1.match("100"));
-        Assert.assertEquals(true,ChallengingREs.AT_LEAST_TWO_0S_AT_MOST_1.match("010"));
-        Assert.assertEquals(false,ChallengingREs.AT_LEAST_TWO_0S_AT_MOST_1.match("011000"));
-        Assert.assertEquals(true,ChallengingREs.AT_LEAST_TWO_0S_AT_MOST_1.match("01000"));
-        Assert.assertEquals(true,ChallengingREs.AT_LEAST_TWO_0S_AT_MOST_1.match("00001"));
-        Assert.assertEquals(false,ChallengingREs.AT_LEAST_TWO_0S_AT_MOST_1.match("100001"));
+        Assert.assertEquals(false, ChallengingREs.AT_LEAST_TWO_0S_AT_MOST_1.match("1"));
+        Assert.assertEquals(false, ChallengingREs.AT_LEAST_TWO_0S_AT_MOST_1.match("10"));
+        Assert.assertEquals(true, ChallengingREs.AT_LEAST_TWO_0S_AT_MOST_1.match("100"));
+        Assert.assertEquals(true, ChallengingREs.AT_LEAST_TWO_0S_AT_MOST_1.match("010"));
+        Assert.assertEquals(false, ChallengingREs.AT_LEAST_TWO_0S_AT_MOST_1.match("011000"));
+        Assert.assertEquals(true, ChallengingREs.AT_LEAST_TWO_0S_AT_MOST_1.match("01000"));
+        Assert.assertEquals(true, ChallengingREs.AT_LEAST_TWO_0S_AT_MOST_1.match("00001"));
+        Assert.assertEquals(false, ChallengingREs.AT_LEAST_TWO_0S_AT_MOST_1.match("100001"));
     }
+
     @Test
     public void BINARY_INTEGER_ARE_A_MULTIPLE_OF_3() {
         for (int i = 0; i < 100000; i++) {
-            Assert.assertEquals(Integer.toBinaryString(i),i % 3 == 0,
+            Assert.assertEquals(Integer.toBinaryString(i), i % 3 == 0,
                     ChallengingREs.BINARY_INTEGER_ARE_A_MULTIPLE_OF_3.match(Integer.toBinaryString(i)));
         }
     }
+
     @Test
     public void NO_TWO_CONSECUTIVE_1S() {
         for (int i = 0; i < 100000; i++) {
@@ -49,6 +53,7 @@ public class ChallengingREsTest {
                     ChallengingREs.NO_TWO_CONSECUTIVE_1S.match(input));
         }
     }
+
     private boolean checkTwoConsecOne(char[] in) {
         char pre = '0';
         for (char c : in) {

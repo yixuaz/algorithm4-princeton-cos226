@@ -3,12 +3,10 @@ package part2.week5.datacompression;
 import edu.princeton.cs.algs4.BinaryStdIn;
 import edu.princeton.cs.algs4.BinaryStdOut;
 
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-
 public class MoveToFrontCodingTimeNR {
     private static final int R = 256;
     private static final char[] ASCII = new char[R];
+
     public static void encode() {
         for (char i = 0; i < R; i++)
             ASCII[i] = i;

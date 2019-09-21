@@ -1,14 +1,10 @@
 package part2.week5.regularexpression;
 
-import edu.princeton.cs.algs4.Bag;
-import edu.princeton.cs.algs4.Digraph;
-import edu.princeton.cs.algs4.DirectedDFS;
-import edu.princeton.cs.algs4.Stack;
-import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.LZW;
 
-import java.util.ArrayList;
-import java.util.List;
-
+/**
+ *  Extensions to NFA. Add to NFA.java the ability to handle multiway or, wildcard, and the + closure operator.
+ */
 public class ExtensionNFA {
     public ExtensionNFA(String regex) {
     }
@@ -17,6 +13,6 @@ public class ExtensionNFA {
         // TODO: ADD YOUR CODE HERE
         return false;
     }
-    
+
 
 }

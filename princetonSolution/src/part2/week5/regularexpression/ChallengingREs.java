@@ -1,6 +1,5 @@
 package part2.week5.regularexpression;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public enum ChallengingREs {
@@ -40,13 +39,16 @@ public enum ChallengingREs {
             return IMPOSSIBLE;
         }
     }, EQUAL_NUM_SUBSTR_FORM_01_AND_10 { // youtube yuFF0gXC6HU
+
         @Override
         String getRegex() {
             return "0+(1*0+)*|1+(0*1+)*|";
         }
     };
     private static final String IMPOSSIBLE = null;
+
     abstract String getRegex();
+
     public boolean match(String input) {
         if (getRegex() == IMPOSSIBLE) return false;
         return Pattern.matches(getRegex(), input);

@@ -3,21 +3,15 @@ package part2.week5.datacompression;
 import commonutil.RandomStringBuilder;
 import edu.princeton.cs.algs4.BinaryStdIn;
 import edu.princeton.cs.algs4.Huffman;
-import edu.princeton.cs.algs4.StdIn;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.PrintStream;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class TernaryHuffmanCodesTest {
     private static PrintStream stdout = System.out;
@@ -55,6 +49,7 @@ public class TernaryHuffmanCodesTest {
             testTemplate(true, input);
         }
     }
+
     @Test
     public void randomTestBase62() throws IOException {
         int N = 10;
@@ -65,12 +60,13 @@ public class TernaryHuffmanCodesTest {
             testTemplate(false, input);
         }
     }
+
     @Test
     public void randomTest012() throws IOException {
         int N = 10;
         for (int i = 0; i < 1000; i++) {
             if (i % 100 == 99) N <<= 1;
-            String input = RandomStringBuilder.randomString(N,"012");
+            String input = RandomStringBuilder.randomString(N, "012");
             testTemplate(true, input);
             testTemplate(false, input);
         }

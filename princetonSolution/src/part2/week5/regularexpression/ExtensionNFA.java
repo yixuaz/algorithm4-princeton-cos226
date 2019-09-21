@@ -17,13 +17,13 @@ public class ExtensionNFA {
     /**
      * Initializes the ExtensionNFA from the specified regular expression.
      *
-     * @param  regexp the regular expression
+     * @param regexp the regular expression
      */
     public ExtensionNFA(String regexp) {
         this.regexp = regexp;
         m = regexp.length();
         Stack<Integer> ops = new Stack<Integer>();
-        graph = new Digraph(m+1);
+        graph = new Digraph(m + 1);
         for (int i = 0; i < m; i++) {
             int lp = i;
             if (regexp.charAt(i) == '(' || regexp.charAt(i) == '|')
@@ -34,26 +34,25 @@ public class ExtensionNFA {
                 // 2-way or operator
                 while (regexp.charAt(or) == '|') {
                     cache.add(or + 1);
-                    //graph.addEdge(lp, or+1);
+                    // graph.addEdge(lp, or+1);
                     graph.addEdge(or, i);
                     or = ops.pop();
                 }
                 if (regexp.charAt(or) == '(') {
                     lp = or;
                     for (int orPlus1 : cache) graph.addEdge(lp, orPlus1);
-                }
-                else assert false;
+                } else assert false;
             }
 
             // closure operator (uses 1-character lookahead)
-            if (i < m-1 && regexp.charAt(i+1) == '*') {
-                graph.addEdge(lp, i+1);
-                graph.addEdge(i+1, lp);
-            }else if (i < m-1 && regexp.charAt(i+1) == '+') {
-                graph.addEdge(i+1, lp);
+            if (i < m - 1 && regexp.charAt(i + 1) == '*') {
+                graph.addEdge(lp, i + 1);
+                graph.addEdge(i + 1, lp);
+            } else if (i < m - 1 && regexp.charAt(i + 1) == '+') {
+                graph.addEdge(i + 1, lp);
             }
             if (regexp.charAt(i) == '(' || regexp.charAt(i) == '*' || regexp.charAt(i) == ')' || regexp.charAt(i) == '+')
-                graph.addEdge(i, i+1);
+                graph.addEdge(i, i + 1);
         }
         if (ops.size() != 0)
             throw new IllegalArgumentException("Invalid regular expression");
@@ -62,9 +61,9 @@ public class ExtensionNFA {
     /**
      * Returns true if the text is matched by the regular expression.
      *
-     * @param  txt the text
+     * @param txt the text
      * @return {@code true} if the text is matched by the regular expression,
-     *         {@code false} otherwise
+     * {@code false} otherwise
      */
     public boolean recognizes(String txt) {
         DirectedDFS dfs = new DirectedDFS(graph, 0);
@@ -82,7 +81,7 @@ public class ExtensionNFA {
             for (int v : pc) {
                 if (v == m) continue;
                 if ((regexp.charAt(v) == txt.charAt(i)) || regexp.charAt(v) == '.')
-                    match.add(v+1);
+                    match.add(v + 1);
             }
             dfs = new DirectedDFS(graph, match);
             pc = new Bag<Integer>();

@@ -1,18 +1,17 @@
 package part2.week5.datacompression;
 
 
-
 import commonutil.RandomStringBuilder;
 import edu.princeton.cs.algs4.BinaryStdIn;
-import edu.princeton.cs.algs4.HexDump;
 import org.junit.Test;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
 
 public class MoveToFrontCodingTest {
     @Test
@@ -26,7 +25,7 @@ public class MoveToFrontCodingTest {
     @Test
     public void randomTest() throws UnsupportedEncodingException {
         for (int i = 100; i < 409600; i <<= 1) {
-            String input = RandomStringBuilder.randomString(i,"&");
+            String input = RandomStringBuilder.randomString(i, "&");
             testTemplate(input);
 
             input = RandomStringBuilder.randomStringLowerCase(i);
@@ -50,12 +49,13 @@ public class MoveToFrontCodingTest {
 
         assertArrayEquals(expect.toByteArray(), test.toByteArray());
 
-        ByteArrayOutputStream origin =prepareTestEnv(test.toString(StandardCharsets.US_ASCII.name()));
+        ByteArrayOutputStream origin = prepareTestEnv(test.toString(StandardCharsets.US_ASCII.name()));
         MoveToFrontCoding.decode();
         BinaryStdIn.close();
 
         assertArrayEquals(input.getBytes(StandardCharsets.US_ASCII), origin.toByteArray());
     }
+
     private ByteArrayOutputStream prepareTestEnv(String input) throws UnsupportedEncodingException {
         System.setIn(new ByteArrayInputStream(input.getBytes(StandardCharsets.US_ASCII)));
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
