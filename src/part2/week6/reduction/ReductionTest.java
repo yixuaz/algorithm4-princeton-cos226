@@ -38,7 +38,7 @@ public class ReductionTest {
         assertTrue(Reduction.threeLinear(new int[]{-7, 16, 8, 3, 6}));
         assertTrue(Reduction.threeLinear(new int[]{-9, 2, 11, -3, 5, 87}));
         assertFalse(Reduction.threeLinear(new int[]{4, 2, -4, 4, -4}));
-        assertFalse(Reduction.threeLinear(new int[]{1,-1}));
+        assertFalse(Reduction.threeLinear(new int[]{1, -1}));
     }
 
     @Test

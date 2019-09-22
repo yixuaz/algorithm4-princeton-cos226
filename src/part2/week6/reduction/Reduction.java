@@ -17,11 +17,11 @@ public class Reduction {
 
     /**
      * 3Sum and 4Sum. Consider the following two problems:
-     *
+     * <p>
      * 3Sum: Given an integer array a, are there three distinct indices i, j, and k such that a_i + a_j + a_k = 0?
      * 4Sum: Given an integer array b, are there four distinct integers i, j, k, and l such that b_i + b_j + b_k + b_l =0?
      * Show that 3Sum linear-time reduces to 4Sum.
-     *
+     * <p>
      * PLEASE USE week6.hashtables.FourSum TO SOLVE THIS PROBLEM
      */
     public static boolean threeSum(int[] A) {
@@ -30,15 +30,14 @@ public class Reduction {
     }
 
 
-
     /**
      * 3Sum and 3Linear. Consider the following two problems:
-     *
+     * <p>
      * 3Linear: Given an integer array a, are there three indices (not necessarily distinct)
      * i, j, and k such that a_i + a_j = 8 * a_k?
      * 3Sum: Given an integer array b, are there three indices (not necessarily distinct) i, j, and k such that b_i + b_j + b_k =0?
      * Show that 3Linear linear-time reduces to 3Sum.
-     *
+     * <p>
      * PLEASE USE threeSumNotDistinct TO SOLVE THIS PROBLEM
      */
     public static boolean threeLinear(int[] A) {

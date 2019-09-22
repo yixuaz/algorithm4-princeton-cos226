@@ -32,10 +32,14 @@ Every Quiz problem, I will build a class and a test to verify the correctness.
 - [x] Week 7: directed graph (all 3 quiz, 1 project with 0 failed, 100 score with all bonus; Aggregate score: 106.67%)
 - [x] Week 8: minimum spanning tree (all 3 quiz, 1 extra credit)
 - [x] Week 8: shortest path (all 3 quiz, 3 extra credit, 1 project with 0 failed, 100 score with all bonus; Aggregate score: 103.53%)
-- [x] Week 9: trie (1 quiz, 2 extra credit)
-- [x] Week 9: substring search (all 3 quiz, 1 extra credit, 1 project with 0 failed, 100 score with all bonus; Aggregate score: 102.22%)
-- [x] Week 10: regular expression (all 3 quiz)
-- [x] Week 10: data compression (2 quiz, 1 extra credit, 1 project with 0 failed; Aggregate score: 100.00%)
+- [x] Week 9: max flow (3 quiz, 1 extra credit, 1 project with 0 failed, Aggregate score: 100.00%)
+- [x] Week 9: radix sort (all 3 quiz, 1 extra credit)
+- [x] Week 10: trie (1 quiz, 2 extra credit)
+- [x] Week 10: substring search (all 3 quiz, 1 extra credit, 1 project with 0 failed, 100 score with all bonus; Aggregate score: 102.22%)
+- [x] Week 11: regular expression (all 3 quiz)
+- [x] Week 11: data compression (2 quiz, 1 extra credit, 1 project with 0 failed; Aggregate score: 100.00%)
+- [x] Week 12: reduction (3 quiz)
+
 
 ## Extra Credit
 - [x] Week 1: Percolation project: memory bonus
@@ -50,8 +54,10 @@ Every Quiz problem, I will build a class and a test to verify the correctness.
 - [x] Week 8: minimum spanning tree : eager prim
 - [x] Week 8: shortest path: arbitrage detection, campus bike ii, parallel job scheduling
 - [x] Week 8: seam carving project: 3 timing bonus
-- [x] Week 9: trie: longest prefix, t9 texting
-- [x] Week 9: substring search: search multiple pattern
-- [x] Week 9: boggle game project: 1 timing bonus
-- [x] Week 10: data compression: LZW implementation
-- [x] Week 10: burrows wheeler project: better circular suffix array
+- [x] Week 9: max flow: bipartite matching
+- [x] Week 9: radix sort: manber myer suffix array
+- [x] Week 10: trie: longest prefix, t9 texting
+- [x] Week 10: substring search: search multiple pattern, boyer moore
+- [x] Week 10: boggle game project: 1 timing bonus
+- [x] Week 11: data compression: LZW implementation
+- [x] Week 11: burrows wheeler project: better circular suffix array
