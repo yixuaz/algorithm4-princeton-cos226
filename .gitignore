@@ -1,0 +1,9 @@
+out/
+*.class
+.idea/
+princetonSolution/compressResult.txt
+.lift/spotbugs.xml
+.lift/checkstyle-suppressions.xml
+.lift/checkstyle-lift.jar
+.lift/checkstyle-coursera.xml
+.lift/algs4.jar

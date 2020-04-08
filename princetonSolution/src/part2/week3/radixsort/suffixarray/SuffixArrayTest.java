@@ -13,16 +13,20 @@ public class SuffixArrayTest {
         for (int i = 10; i <= 1000; i++) {
             String cur = RandomStringBuilder.randomStringBase62(i);
             SuffixArray expect = new NaiveSuffixArray();
-            SuffixArray test = new ManberMyerSuffixArray();
-            assertArrayEquals(expect.getSuffixArray(cur), test.getSuffixArray(cur));
+            SuffixArray test1 = new SuffixTreeSuffixArray();
+            SuffixArray test2 = new ManberMyerSuffixArray();
+            int[] expectArr = expect.getSuffixArray(cur);
+            assertArrayEquals(expectArr, test1.getSuffixArray(cur));
+            assertArrayEquals(expectArr, test2.getSuffixArray(cur));
         }
     }
 
     @Test
     public void performanceTest() {
-        long time1 = 0, time2 = 0;
+        long time1 = 0, time2 = 0, time3 = 0;
         SuffixArray n2 = new NaiveSuffixArray();
         SuffixArray nlgn = new ManberMyerSuffixArray();
+        SuffixArray n = new SuffixTreeSuffixArray();
         for (int i = 100; i <= 5000; i <<= 1) {
             String cur = RandomStringBuilder.randomStringBase62(i);
             long st = System.nanoTime();
@@ -31,7 +35,10 @@ public class SuffixArrayTest {
             st = System.nanoTime();
             nlgn.getSuffixArray(cur);
             time2 = System.nanoTime() - st;
-            System.out.println(i + " ,n^2 :" + time1 + ", nlgn :" + time2);
+            st = System.nanoTime();
+            n.getSuffixArray(cur);
+            time3 = System.nanoTime() - st;
+            System.out.println(i + " ,n^2 :" + time1 + ", nlgn :" + time2 + ", n :" + time3);
         }
     }
 
