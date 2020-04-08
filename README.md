@@ -9,6 +9,9 @@ https://www.coursera.org/learn/algorithms-part2/home
 the courses origin web site is here:
 https://www.cs.princeton.edu/courses/archive/spring19/cos226/
 
+my blog site:
+https://www.jianshu.com/nb/38792095
+
 ## Target
 In coursera, I found the quiz part has worst experience.
 
